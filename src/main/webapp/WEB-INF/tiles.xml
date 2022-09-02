@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache
+            Software Foundation//DTD Tiles Configuration 3.0//EN"
+            "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    <definition name="baseLayout" template="/WEB-INF/layout/base.jsp">
+        <put-attribute name="title" value=""/>
+        <put-attribute name="header" value="/WEB-INF/layout/header.jsp"/>
+        <put-attribute name="content" value=""/>
+        <put-attribute name="footer" value="/WEB-INF/layout/footer.jsp"/>
+    </definition>
+    <definition name="home" extends="baseLayout">
+        <put-attribute name="title" value="Trang Chủ"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/index.jsp"/>
+    </definition>
+    <definition name="login" extends="baseLayout">
+        <put-attribute name="title" value="Đăng Nhập"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/login.jsp"/>
+    </definition>
+    <definition name="register" extends="baseLayout">
+        <put-attribute name="title" value="Đăng kí"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/register.jsp"/>
+    </definition>
+    <definition name="package" extends="baseLayout">
+        <put-attribute name="title" value="Gói nhà xe"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/package.jsp"/>
+    </definition>
+    <definition name="companyInfo" extends="baseLayout">
+        <put-attribute name="title" value="Thông tin nhà xe"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/companyInfo.jsp"/>
+    </definition>
+     <definition name="companyRouteMn" extends="baseLayout">
+        <put-attribute name="title" value="Quản lý tuyến xe"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/companyRouteMn.jsp"/>
+    </definition>
+    <definition name="companyTripMn" extends="baseLayout">
+        <put-attribute name="title" value="Quản lý chuyến xe"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/companyTripMn.jsp"/>
+    </definition>
+    <definition name="listCarCompany" extends="baseLayout">
+        <put-attribute name="title" value="Danh sách nhà xe"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/listCarCompany.jsp"/>
+    </definition>
+    <definition name="carCompanyDetails" extends="baseLayout">
+        <put-attribute name="title" value="Chi tiết nhà xe"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/carCompanyDetails.jsp"/>
+    </definition>
+    <definition name="userInf" extends="baseLayout">
+        <put-attribute name="title" value="Chi tiết thông tin người dùng"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/userInf.jsp"/>
+    </definition>
+    <definition name="userInfoEdit" extends="baseLayout">
+        <put-attribute name="title" value="Chi tiết thông tin người dùng"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/userInfoEdit.jsp"/>
+    </definition>
+    <definition name="carCompanyInfoEdit" extends="baseLayout">
+        <put-attribute name="title" value="Chỉnh sửa thông nhà xe"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/companyInfoEdit.jsp"/>
+    </definition>
+    <definition name="searchResult" extends="baseLayout">
+        <put-attribute name="title" value="Kết quả tra cứu"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/searchResult.jsp"/>
+    </definition>
+    <definition name="cart" extends="baseLayout">
+        <put-attribute name="title" value="Giỏ hàng"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/cart.jsp"/>
+    </definition>
+    <definition name="revenue-stat" extends="baseLayout">
+        <put-attribute name="title" value="Thống kê doanh thu"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/revenue-stat.jsp"/>
+    </definition>
+    <definition name="frequency-stat" extends="baseLayout">
+        <put-attribute name="title" value="Thống kê tần suất"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/frequency-stat.jsp"/>
+    </definition>
+    <!--Admin-->
+    <definition name="baseAdminLayout" template="/WEB-INF/layout/admin/base.jsp">
+        <put-attribute name="title" value=""/>
+        <put-attribute name="header" value="/WEB-INF/layout/admin/header.jsp"/>
+        <put-attribute name="content" value=""/>
+        <put-attribute name="sidebar" value="/WEB-INF/layout/admin/sidebar.jsp"/>
+        <put-attribute name="footer" value="/WEB-INF/layout/admin/footer.jsp"/>
+    </definition>
+    <definition name="admin-dashboard" extends="baseAdminLayout">
+        <put-attribute name="title" value="Trang Chủ - Admin"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/index.jsp"/>
+    </definition>
+    <definition name="error" template="/WEB-INF/jsp/error.jsp">
+    </definition>
+
+</tiles-definitions>
