@@ -74,6 +74,10 @@
         <put-attribute name="title" value="Thống kê tần suất"/>
         <put-attribute name="content" value="/WEB-INF/jsp/frequency-stat.jsp"/>
     </definition>
+    <definition name="shipment" extends="baseLayout">
+        <put-attribute name="title" value="Vận chuyển hàng"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/shipment.jsp"/>
+    </definition>
     <!--Admin-->
     <definition name="baseAdminLayout" template="/WEB-INF/layout/admin/base.jsp">
         <put-attribute name="title" value=""/>

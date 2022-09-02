@@ -11,7 +11,7 @@
         <div class="col-3">
             <ul class="nav-links">
                 <li>
-                    <a href="">
+                    <a href="<c:url value="/companyMn/company-info"/>">
                         <i class="fa-solid fa-circle-info"></i>
                         <span class="link_name">Thông tin nhà xe</span>
                     </a>
@@ -29,7 +29,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="<c:url value="/companyMn/shipment"/>">
                         <i class="fa-solid fa-ticket"></i>
                         <span class="link_name">Giao hàng</span>
                     </a>

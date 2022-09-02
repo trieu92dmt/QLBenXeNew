@@ -140,6 +140,27 @@ function addComment(companyId) {
     })
 }
 
+function getListTripByRoute(){
+    var url = new URL('http://localhost:8080/QLBenXe/api/trips');
+    var params = {
+        routeId: document.getElementById("route-data").value,
+        date: document.getElementById("trip-date").value
+    }
+    url.search = new URLSearchParams(params).toString();
+    fetch(url).then(function (res) {
+        return res.json();
+    }).then(function (data) {
+        console.log(data);
+        let area = document.getElementById("trip-data");
+        let html = "";
+        for (var i = 0; i < data.length; i++){
+            html = `<option value="${data[i].tripId}">${data[i].departureTime}</option>` + html;
+        }
+        console.log(html);
+        area.innerHTML = html;
+    })
+}
+
 $("#upload-img").on("change", function ()
 {
     var files = !!this.files ? this.files : [];

@@ -18,10 +18,12 @@
                 <form:form class="mb-2" enctype="multipart/form-data"
                            action="${register}" method="post" modelAttribute="user">
                     <label class="text-center d-block color-blue fs-4 mb-3">Đăng Ký</label>
+                    <form:errors path="username" cssClass="alert alert-danger" element="div"></form:errors>
                     <div class="mb-3">
                         <label for="username" class="form-label">Tên đăng nhập: </label>
                         <form:input type="text" class="form-control" id="username" placeholder="Tên đăng nhập" path="username"/>
                     </div>
+                    <form:errors path="password" cssClass="alert alert-danger" element="div"></form:errors>
                     <div class="mb-3">
                         <label for="pwd" class="form-label">Mật khẩu: </label>
                         <form:input type="password" class="form-control" id="pwd" placeholder="Mật khẩu" path="password"/>
@@ -30,6 +32,7 @@
                         <label for="confirm-pwd" class="form-label">Nhập lại mật khẩu: </label>
                         <form:input type="password" class="form-control" id="confirm-pwd" placeholder="Xác nhận mật khẩu" path="confirmPassword"/>
                     </div>
+                    <form:errors path="email" cssClass="alert alert-danger" element="div"></form:errors>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email: </label>
                         <form:input type="email" class="form-control" id="email" placeholder="Email" path="email"/>

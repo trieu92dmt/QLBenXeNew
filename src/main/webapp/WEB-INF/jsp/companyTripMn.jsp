@@ -30,7 +30,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="<c:url value="/companyMn/shipment"/>">
                         <i class="fa-solid fa-ticket"></i>
                         <span class="link_name">Giao hàng</span>
                     </a>
