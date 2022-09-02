@@ -31,6 +31,12 @@
                 </li>
                 <li>
                     <a href="">
+                        <i class="fa-solid fa-ticket"></i>
+                        <span class="link_name">Giao hàng</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
                         <i class="fa-solid fa-business-time"></i>
                         <span class="link_name">Gia hạn gói nhà xe</span>
                     </a>

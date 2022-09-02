@@ -31,7 +31,7 @@
                 <li>
                     <a href="">
                         <i class="fa-solid fa-ticket"></i>
-                        <span class="link_name">Bán vé</span>
+                        <span class="link_name">Giao hàng</span>
                     </a>
                 </li>
                 <li>

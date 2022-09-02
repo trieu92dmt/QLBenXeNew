@@ -31,7 +31,7 @@
                 <li>
                     <a href="">
                         <i class="fa-solid fa-ticket"></i>
-                        <span class="link_name">Bán vé</span>
+                        <span class="link_name">Giao hàng</span>
                     </a>
                 </li>
                 <li>
@@ -128,7 +128,24 @@
                         </table>
                     </div>
                 </c:if>   
+                <div class="chart my-3">
+                    <canvas id="myChart"></canvas>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="<c:url value="/js/stat.js"/>"></script>
+<script type="text/javascript">
+    let labelInfos = [], datas = [];
+
+    <c:forEach items="${statResult}" var="s">
+        labelInfos.push('${s[1].provinceName}');
+        datas.push(${s[2]});
+    </c:forEach>
+
+    window.onload = function () {
+        revenueStat(labelInfos, datas);
+    }
+</script>

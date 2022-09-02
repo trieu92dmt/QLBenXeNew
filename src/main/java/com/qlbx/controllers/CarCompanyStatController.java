@@ -30,7 +30,7 @@ public class CarCompanyStatController {
     @GetMapping("/revenue-stat")
     public String revenueStat(Model model, @RequestParam(required = false) Map<String, String> params, HttpSession session) {
         User user = (User) session.getAttribute("currentUser");
-        if (params != null) {
+        if (params != null && !params.isEmpty()) {
             if (params.get("month") != "" && params.get("month") != null) {
                 int month = Integer.parseInt(params.get("month"));
                 int year = Integer.parseInt(params.get("year"));
