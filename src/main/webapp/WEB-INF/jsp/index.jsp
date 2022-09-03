@@ -25,26 +25,6 @@
                     </c:forEach>
                 </div>
             </div>
-            <div class="dropdown p-1">
-                <div class="dropdown-select">
-                    <div class="d-flex align-items-center">
-                        <i class="fa-solid fa-caravan me-3"></i>
-                        <span class="select">Danh sách nhà xe</span>
-                    </div>
-                    <i class="fa-solid fa-angle-right"></i>
-                </div>
-                <div class="dropdown-list">
-                    <div class="dropdown-list__item p-1">
-                        <a href="#">Link 1</a>
-                    </div>
-                    <div class="dropdown-list__item p-1">
-                        <a href="#">Link 2</a>
-                    </div>
-                    <div class="dropdown-list__item p-1">
-                        <a href="#">Link 3</a>
-                    </div>
-                </div>
-            </div>
         </div>
         <div id="demo" class="carousel slide mb-3 col-md-9" data-bs-ride="carousel">
 

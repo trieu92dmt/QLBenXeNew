@@ -6,6 +6,7 @@
 package com.qlbx.controllers;
 
 import com.qlbx.pojo.Trip;
+import com.qlbx.service.CarCompanyService;
 import com.qlbx.service.TripService;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -15,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,20 +29,38 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api")
 public class ApiController {
+
     @Autowired
     private TripService tripService;
-    
+    @Autowired
+    private CarCompanyService carCompanyService;
+
     @GetMapping("/trips")
-    public ResponseEntity<List<Trip>> getListTripsByRouteIdAndDate(@RequestParam Map<String, String> params){
-        try{
+    public ResponseEntity<List<Trip>> getListTripsByRouteIdAndDate(@RequestParam Map<String, String> params) {
+        try {
             int routeId = Integer.parseInt(params.get("routeId"));
             Date date = new SimpleDateFormat("yyyy-MM-dd").parse(params.get("date"));
             List<Trip> list = this.tripService.getListTripsByRouteIdAndDate(routeId, date);
             return new ResponseEntity<>(list, HttpStatus.CREATED);
-        }catch(Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
-        
+
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+    }
+
+    @PostMapping("/admin/update-status")
+    public HttpStatus updateTicket(@RequestBody Map<String, String> params) {
+        try {
+            int companyId = Integer.parseInt(params.get("companyId"));
+            int status = Integer.parseInt(params.get("status"));
+            if (this.carCompanyService.updateStatus(companyId, status)) {
+                return HttpStatus.OK;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+
+        return HttpStatus.BAD_REQUEST;
     }
 }

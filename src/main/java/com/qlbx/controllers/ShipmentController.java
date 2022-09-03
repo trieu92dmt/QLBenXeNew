@@ -16,10 +16,13 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -37,6 +40,8 @@ public class ShipmentController {
     private RouteService routeService;
     @Autowired
     private TripService tripService;
+    @Autowired
+    private MailSender mailSender;
     
     @GetMapping("/shipment")
     public String shipment(Model model, HttpSession session, @RequestParam Map<String, String> params){
@@ -60,5 +65,17 @@ public class ShipmentController {
         
         return "redirect:/companyMn/shipment";
     }
-
+    
+    @GetMapping("/send-email/{shipId}")
+    public String sendEmail(@PathVariable(value = "shipId") int shipId){
+        ShipmentDetails shipment = this.shipmentService.getShipmentById(shipId);
+        SimpleMailMessage m = new SimpleMailMessage();
+        m.setFrom("trieu251101ou@gmail.com");
+        m.setTo(shipment.getReceiverEmail());
+        m.setSubject("Thong bao nhan hang");
+        m.setText("Thong bao quy khach den nhan hang");
+        
+        this.mailSender.send(m);
+        return "redirect:/companyMn/shipment";
+    }
 }

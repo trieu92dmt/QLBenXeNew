@@ -33,6 +33,9 @@ public class PasswordValidator implements Validator{
             errors.rejectValue("password", "password.whiteSpaceErr");
         else if (!pass.matches(pattern))
             errors.rejectValue("password", "password.specialCharErr");
+        else if (!user.getConfirmPassword().equals(pass)){
+            errors.rejectValue("confirmPassword", "password.confirmPasswordErr");
+        }
     }
     
 }

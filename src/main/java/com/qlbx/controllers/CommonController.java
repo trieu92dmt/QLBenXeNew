@@ -35,12 +35,11 @@ public class CommonController {
         model.addAttribute("currentUser", session.getAttribute("currentUser"));
         model.addAttribute("provinces", this.provinceService.getListProvince());
         Map<String, CompanyCart> cart = (Map<String, CompanyCart>) session.getAttribute("company-cart");
-        int countCart;
         if (cart == null)
-            countCart = 0;
+            model.addAttribute("countCart", 0);
         else 
-            countCart = cart.size();
-        model.addAttribute("countCart", countCart);
+            model.addAttribute("countCart", cart.size());
+        
     }
     
     @GetMapping(value = "error")

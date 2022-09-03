@@ -52,7 +52,7 @@ public class Trip implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
+//    @NotNull
     @Column(name = "trip_id")
     private Integer tripId;
     @Column(name = "date")

@@ -13,13 +13,13 @@
     </div>
     <ul class="nav-links">
         <li>
-            <a href="">
+            <a href="<c:url value="/admin/dashboard"/>">
                 <i class="fa-solid fa-chart-line"></i>
                 <span class="link_name">Dashboard</span>
             </a>
         </li>
         <li>
-            <a href="">
+            <a href="<c:url value="/admin/companyMn"/>">
                 <i class="fa-solid fa-list-check"></i>
                 <span class="link_name">Quản lý nhà xe</span>
             </a>
@@ -39,7 +39,7 @@
                     <div class="profile_name">Minh Trieu</div>
                     <div class="job">Manager</div>
                 </div>
-                <a href="<c:url value="/admin-logout"/>">
+                <a href="<c:url value="/user-logout"/>">
                     <i class="fa-solid fa-right-from-bracket"></i>
                 </a>
             </div>

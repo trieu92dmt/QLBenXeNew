@@ -44,7 +44,7 @@ public class Route implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
+//    @NotNull
     @Column(name = "route_id")
     private Integer routeId;
     @Size(max = 45)

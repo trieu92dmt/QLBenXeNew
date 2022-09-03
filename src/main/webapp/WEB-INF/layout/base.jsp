@@ -30,6 +30,7 @@
         var day = new Date();
         moment().format();
         var mome = moment(day);
+        $("#departure-date").attr("min", mome.format("YYYY-MM-DD").toString());
         $("#departure-date").val(mome.format("YYYY-MM-DD").toString());
     </script>
 </html>

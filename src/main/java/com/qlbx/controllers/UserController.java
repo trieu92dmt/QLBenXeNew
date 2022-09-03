@@ -8,6 +8,7 @@ package com.qlbx.controllers;
 import com.qlbx.pojo.User;
 import com.qlbx.service.UserService;
 import com.qlbx.validator.WebAppValidator;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,7 +26,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @author ASUS
  */
 @Controller
-
 public class UserController {
     @Autowired
     private WebAppValidator userValidator;
@@ -38,12 +38,16 @@ public class UserController {
     }
 
     @GetMapping("/login")
-    public String login() {
+    public String login(HttpSession session) {
+        if (session.getAttribute("currentUser") != null)
+            return "redirect:/";    
         return "login";
     }
 
     @GetMapping("/register")
-    public String registerView(Model model) {
+    public String registerView(Model model, HttpSession session) {
+        if (session.getAttribute("currentUser") != null)
+            return "redirect:/";   
         model.addAttribute("user", new User());
         return "register";
     }

@@ -43,11 +43,12 @@ import org.springframework.web.bind.annotation.RequestParam;
  * @author ASUS
  */
 @Controller
-@Transactional  
+@Transactional
 @RequestMapping("/companyMn")
 public class CarCompanyMnController {
+
     @Autowired
-    private UserService userDetailsService; 
+    private UserService userDetailsService;
     @Autowired
     private Cloudinary cloudinary;
     @Autowired
@@ -56,17 +57,25 @@ public class CarCompanyMnController {
     private TripService tripService;
     @Autowired
     private CarCompanyService carCompanyService;
-    
+
     @GetMapping("/company-info")
     public String companyInfoMn(Model model, HttpSession session) {
         User user = (User) session.getAttribute("currentUser");
+        int status = this.carCompanyService.getCarCompanyById(user.getUserId()).getStatus();
+        if (status == 0 || status == -1) {
+            return "redirect:/";
+        }
         model.addAttribute("carCompany", this.carCompanyService.getCarCompanyById(user.getUserId()));
         return "companyInfo";
     }
-    
+
     @GetMapping("/company-info-edit")
     public String companyInfoEdit(Model model, HttpSession session) {
         User user = (User) session.getAttribute("currentUser");
+        int status = this.carCompanyService.getCarCompanyById(user.getUserId()).getStatus();
+        if (status == 0 || status == -1) {
+            return "redirect:/";
+        }
         model.addAttribute("carCompany", this.carCompanyService.getCarCompanyById(user.getUserId()));
         model.addAttribute("avatarCarCompany", new AvatarCarCompany());
         return "carCompanyInfoEdit";
@@ -76,7 +85,6 @@ public class CarCompanyMnController {
     public String updateCompanyinfo(@ModelAttribute(value = "avatarCarCompany") AvatarCarCompany avatarCarCompany, HttpSession session) {
         try {
             User user = (User) session.getAttribute("currentUser");
-
             CarCompany carCompany = this.carCompanyService.getCarCompanyById(user.getUserId());
 
             if (!avatarCarCompany.getFile().isEmpty()) {
@@ -95,12 +103,16 @@ public class CarCompanyMnController {
         }
         return "redirect:/companyMn/company-info-edit";
     }
-    
+
     @GetMapping("/company-route-manager")
-    public String companyRouteMn(Model model, HttpSession session, 
+    public String companyRouteMn(Model model, HttpSession session,
             @RequestParam(required = false) Map<String, String> params) {
         int page = Integer.parseInt(params.getOrDefault("page", "1"));
         User user = (User) session.getAttribute("currentUser");
+        int status = this.carCompanyService.getCarCompanyById(user.getUserId()).getStatus();
+        if (status == 0 || status == -1) {
+            return "redirect:/";
+        }
         CarCompany carCompany = user.getCarCompany();
         model.addAttribute("carCompany", carCompany);
         model.addAttribute("routes", this.routeService.getRoutesByCompanyId(user.getUserId(), page));
@@ -108,22 +120,23 @@ public class CarCompanyMnController {
         model.addAttribute("routeCount", this.routeService.countRouteByCompanyId(user.getUserId()));
         return "companyRouteMn";
     }
-    
+
     @PostMapping("/add-route")
-    public String addRoute(Model model,@ModelAttribute(value = "route") Route route, HttpSession session){
+    public String addRoute(Model model, @ModelAttribute(value = "route") Route route, HttpSession session) {
         User user = (User) session.getAttribute("currentUser");
         route.setCompanyId(this.carCompanyService.getCarCompanyById(user.getUserId()));
-        if (this.routeService.addRoute(route)){
+        if (this.routeService.addRoute(route)) {
             model.addAttribute("messageSuccess", "Thêm mới thành công!");
+        } else {
+            model.addAttribute("messageFailure", "Đã có lỗi xảy ra!");
         }
-        else model.addAttribute("messageFailure", "Đã có lỗi xảy ra!");
         return "redirect:/companyMn/company-route-manager";
     }
-    
+
     @GetMapping("/company-trip-manager")
     public String companyTripMn(Model model, @RequestParam Map<String, String> params, HttpSession session) throws ParseException {
-        if (params != null){
-            int routeId = Integer.parseInt(params.getOrDefault("routeId","1"));
+        if (params != null) {
+            int routeId = Integer.parseInt(params.getOrDefault("routeId", "1"));
             Date date = new SimpleDateFormat("yyyy-MM-dd").parse(params.getOrDefault("date", "2022-08-22"));
             List<Trip> list = this.tripService.getListTripsByRouteIdAndDate(routeId, date);
             model.addAttribute("routeId", routeId);
@@ -131,20 +144,25 @@ public class CarCompanyMnController {
             model.addAttribute("trips", list);
         }
         User user = (User) session.getAttribute("currentUser");
+        int status = this.carCompanyService.getCarCompanyById(user.getUserId()).getStatus();
+        if (status == 0 || status == -1) {
+            return "redirect:/";
+        }
         model.addAttribute("routes", this.routeService.getAllRouteByCompanyId(user.getUserId()));
         model.addAttribute("trip", new Trip());
         return "companyTripMn";
     }
-    
+
     @PostMapping("/add-trip")
-    public String addTrip(Model model,@ModelAttribute(value = "trip") Trip trip){
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");  
+    public String addTrip(Model model, @ModelAttribute(value = "trip") Trip trip) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
         model.addAttribute("routeId", trip.getRouteId().getRouteId());
         model.addAttribute("date", formatter.format(trip.getDate()));
-        if (this.tripService.addTrip(trip)){
+        if (this.tripService.addTrip(trip)) {
             model.addAttribute("messageSuccess", "Thêm mới thành công!");
+        } else {
+            model.addAttribute("messageFailure", "Đã có lỗi xảy ra!");
         }
-        else model.addAttribute("messageFailure", "Đã có lỗi xảy ra!");
         return "redirect:/companyMn/company-trip-manager";
     }
 

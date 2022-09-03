@@ -50,7 +50,7 @@ public class ShipmentDetails implements Serializable {
     @Id
     @Basic(optional = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
+//    @NotNull
     @Column(name = "ship_id")
     private Integer shipId;
     @Size(max = 45)
@@ -67,11 +67,11 @@ public class ShipmentDetails implements Serializable {
     private String receiverEmail;
     @Column(name = "receiving_time")
 //    @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date receivingTime;
     @Column(name = "sending_time")
 //    @Temporal(TemporalType.TIMESTAMP)
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'hh:mm")
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
     private Date sendingTime;
     @Column(name = "cost")
     private BigInteger cost;

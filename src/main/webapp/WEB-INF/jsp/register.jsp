@@ -28,6 +28,7 @@
                         <label for="pwd" class="form-label">Mật khẩu: </label>
                         <form:input type="password" class="form-control" id="pwd" placeholder="Mật khẩu" path="password"/>
                     </div>
+                    <form:errors path="confirmPassword" cssClass="alert alert-danger" element="div"></form:errors>
                     <div class="mb-3">
                         <label for="confirm-pwd" class="form-label">Nhập lại mật khẩu: </label>
                         <form:input type="password" class="form-control" id="confirm-pwd" placeholder="Xác nhận mật khẩu" path="confirmPassword"/>

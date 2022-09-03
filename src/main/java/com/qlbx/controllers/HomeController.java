@@ -5,7 +5,6 @@
  */
 package com.qlbx.controllers;
 
-
 import com.qlbx.pojo.CompanyCart;
 import com.qlbx.service.PackageService;
 import com.qlbx.service.TripService;
@@ -14,6 +13,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 import javax.servlet.http.HttpSession;
+import org.apache.commons.lang.time.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,25 +26,34 @@ import org.springframework.web.bind.annotation.RequestParam;
  */
 @Controller
 public class HomeController {
+
     @Autowired
     private PackageService packageService;
     @Autowired
     private TripService tripService;
-    
-    @GetMapping(value="/")
-    public String index(){
+
+    @GetMapping(value = "/")
+    public String index() {
         return "home";
     }
 
     @GetMapping(value = "/searchResult")
-    public String search(Model model, @RequestParam Map<String, String> params, HttpSession session) throws ParseException{
-        int destination = Integer.parseInt(params.get("destination"));
-        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(params.get("departure-date"));
-        model.addAttribute("trips", this.tripService.getListTripsByDestinationAndDate(destination, date));
-        Map<String, CompanyCart> carts = (Map<String, CompanyCart>) session.getAttribute("company-cart");
-        if (carts != null){
-            model.addAttribute("carts",  carts.values());
+    public String search(Model model, @RequestParam Map<String, String> params, HttpSession session) throws ParseException {
+        try {
+            int destination = Integer.parseInt(params.get("destination"));
+            Date date = new SimpleDateFormat("yyyy-MM-dd").parse(params.get("departure-date"));
+            Date now = DateUtils.addDays(new Date(), -1);
+            if (now.compareTo(date) > 0)
+                throw new Exception();
+            model.addAttribute("trips", this.tripService.getListTripsByDestinationAndDate(destination, date));
+            Map<String, CompanyCart> carts = (Map<String, CompanyCart>) session.getAttribute("company-cart");
+            if (carts != null) {
+                model.addAttribute("carts", carts.values());
+            }
+        }catch(Exception ex){
+            return "redirect:/";
         }
+
         return "searchResult";
     }
 }

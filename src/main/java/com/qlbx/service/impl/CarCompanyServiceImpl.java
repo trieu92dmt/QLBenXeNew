@@ -32,6 +32,7 @@ public class CarCompanyServiceImpl implements CarCompanyService{
 
     @Override
     public boolean addCarCompany(CarCompany carCompany) {
+        carCompany.setStatus(0);
         return this.carCompanyRepository.addCarCompany(carCompany);
     }
 
@@ -39,4 +40,11 @@ public class CarCompanyServiceImpl implements CarCompanyService{
 //    public CarCompany getCarCompanyById(int id) {
 //        return this.carCompanyRepository.getCarCompanyById(id);
 //    }
+
+    @Override
+    public boolean updateStatus(int companyId, int status) {
+        CarCompany c = this.carCompanyRepository.getCarCompanyById(companyId);
+        c.setStatus(status);
+        return this.carCompanyRepository.updateStatus(c);
+    }
 }

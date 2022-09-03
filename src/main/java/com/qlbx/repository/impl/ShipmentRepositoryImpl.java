@@ -52,4 +52,22 @@ public class ShipmentRepositoryImpl implements ShipmentRepository{
         }
         return false;
     }
+
+    @Override
+    public boolean updateShipmentDetails(ShipmentDetails shipmentDetails) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        try{
+            session.merge(shipmentDetails);
+            return true;
+        }catch(HibernateException ex){
+            System.err.println(ex.getMessage());
+        }
+        return false;
+    }
+
+    @Override
+    public ShipmentDetails getShipmentById(int shipId) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        return session.get(ShipmentDetails.class,shipId);
+    }
 }

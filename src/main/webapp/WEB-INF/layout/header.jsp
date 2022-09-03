@@ -64,27 +64,40 @@
                     </div>
                 </div>
                 <div class="nav-icon me-4">
-                    <button type="button" class="btn btn-primary">
-                        <a href="<c:url value="/cart/show"/>">
-                            <i class="fa-solid fa-cart-shopping"></i>
-                        </a>
-                            <span id="cart-btn" class="badge bg-danger">
-                                ${countCart}
-                            </span>
-                    </button>
-                </div>
-                <div class="nav-icon me-4">
                     <i id="notification" class="fa-solid fa-bell notification"></i>
-                    <div id="notification-list" class="notification-list">
-                        <div class="notification-empty">
-                            <span class="notification-header">Thông báo</span>
-                            <div class="notification-content d-flex flex-column align-items-center p-3">
-                                <img src="<c:url value="/images/box.png"/>" alt="alt"/>
-                                <span>Đăng nhập để nhận thông báo</span>
-                                <a href="#">Đăng nhập</a>
+                    <c:if test="${currentUser == null}">
+                        <div id="notification-list" class="notification-list">
+                            <div class="notification-empty">
+                                <span class="notification-header">Thông báo</span>
+                                <div class="notification-content d-flex flex-column align-items-center p-3">
+                                    <img src="<c:url value="/images/box.png"/>" alt="alt"/>
+                                    <span>Đăng nhập để nhận thông báo</span>
+                                    <a href="<c:url value="/login"/>">Đăng nhập</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    </c:if>
+                    <c:if test="${currentUser != null}">
+                        <div id="notification-list" class="notification-list">
+                            <div class="notification-empty">
+                                <span class="notification-header">Thông báo</span>
+                                <div class="notification-content d-flex flex-column align-items-center p-3">
+                                    <img src="<c:url value="/images/box.png"/>" alt="alt"/>
+                                    <span>Chưa có thông báo</span>
+                                </div>
+                            </div>
+                        </div>
+                    </c:if>
+                </div>
+                <div class="nav-icon me-4">
+                    <button type="button" class="qlbx-btn-dark">
+                        <a style="color: #fff;" href="<c:url value="/cart/show"/>">
+                            <i class="fa-solid fa-cart-shopping"></i>
+                        </a>
+                        <span id="cart-btn" class="badge bg-danger">
+                            ${countCart}
+                        </span>
+                    </button>
                 </div>
                 <div class="navbar-brand m-0">
                     <c:if test="${currentUser == null}">
@@ -112,22 +125,29 @@
                                 </a>
                             </li>
                         </c:if>
-                        <c:if test="${currentUser != null && currentUser.role.equals('ROLE_USER') || currentUser.role.equals('ROLE_ADMIN') }">
+                        <c:if test="${currentUser != null && currentUser.role.equals('ROLE_USER')}">
                             <li class="p-1">
                                 <a class="d-flex" href="<c:url value="/userMn/user-info"/>">
                                     <i class="fa-solid fa-id-card"></i>
-                                    <span>Chi tiết thông tin người dùng</span>
+                                    <span>Thông tin người dùng</span>
                                 </a>
                             </li>
-
+                        </c:if>
+                        <c:if test="${ currentUser.role.equals('ROLE_ADMIN') }">
+                            <li class="p-1">
+                                <a class="d-flex" href="<c:url value="/admin/dashboard"/>">
+                                    <i class="fa-solid fa-id-card"></i>
+                                    <span>Admin Dashboard</span>
+                                </a>
+                            </li>
                         </c:if>
                         <c:if test="${currentUser != null}">
-                        <li class="p-1">
-                            <a class="d-flex" href="<c:url value="/user-logout"/>">
-                                <i class="fa-solid fa-right-to-bracket"></i>
-                                <span>Đăng xuất</span>
-                            </a>
-                        </li>
+                            <li class="p-1">
+                                <a class="d-flex" href="<c:url value="/user-logout"/>">
+                                    <i class="fa-solid fa-right-to-bracket"></i>
+                                    <span>Đăng xuất</span>
+                                </a>
+                            </li>
                         </c:if>
                     </ul>
                 </div>

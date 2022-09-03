@@ -12,6 +12,7 @@ import com.qlbx.formatter.TripFormatter;
 import com.qlbx.validator.PasswordValidator;
 import com.qlbx.validator.WebAppValidator;
 import java.util.HashSet;
+import java.util.Properties;
 import java.util.Set;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -19,6 +20,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
@@ -62,7 +65,7 @@ public class WebApplicationContextConfig implements WebMvcConfigurer {
         registry.addFormatter(new RouteFormatter());
         registry.addFormatter(new TripFormatter());
         registry.addFormatter(new ProvinceFormatter());
-        registry.addFormatter(new DateTimeFormatter());
+//        registry.addFormatter(new DateTimeFormatter());
     }
 
     @Bean(name = "validator")
@@ -111,5 +114,24 @@ public class WebApplicationContextConfig implements WebMvcConfigurer {
                 = new CommonsMultipartResolver();
         resolver.setDefaultEncoding("UTF-8");
         return resolver;
+    }
+    
+    @Bean
+    public JavaMailSender getMailSender(){
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+        
+        mailSender.setHost("smtp.gmail.com");
+        mailSender.setPort(587);
+        mailSender.setUsername("trieu251101ou@gmail.com");
+        mailSender.setPassword("qrugicipquaqhgmj");
+        
+        Properties javaMailProperties = new Properties();
+        javaMailProperties.put("mail.smtp.starttls.enable", "true");
+        javaMailProperties.put("mail.smtp.auth", "true");
+        javaMailProperties.put("mail.transport.protocol", "smtp");
+        javaMailProperties.put("mail.debug", "true");
+        
+        mailSender.setJavaMailProperties(javaMailProperties);
+        return mailSender;
     }
 }

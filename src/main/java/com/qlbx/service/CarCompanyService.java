@@ -14,6 +14,7 @@ import java.util.List;
  */
 public interface CarCompanyService {
     boolean addCarCompany(CarCompany carCompany);
+    boolean updateStatus(int companyId, int status);
     List<CarCompany> getListCarCompany();
     CarCompany getCarCompanyById(int id);
 }

@@ -14,5 +14,7 @@ import java.util.List;
  */
 public interface ShipmentRepository {
     List<ShipmentDetails> getlistShipmentByTripId(int tripId);
+    ShipmentDetails getShipmentById(int shipId);
     boolean addShipmentDetails(ShipmentDetails shipmentDetails);
+    boolean updateShipmentDetails(ShipmentDetails shipmentDetails);
 }

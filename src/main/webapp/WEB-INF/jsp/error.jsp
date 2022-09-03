@@ -13,5 +13,6 @@
     </head>
     <body>
         <h1>ERROR!</h1>
+        <h1>Không Có Quyền Try Cập</h1>
     </body>
 </html>

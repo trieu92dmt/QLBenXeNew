@@ -59,16 +59,16 @@ public class CarCompanyRepositoryImpl implements CarCompanyRepository{
         return false;
     }
 
-//    @Override
-//    public CarCompany getCarCompanyById(int id) {
-//        Session s = sessionFactory.getObject().getCurrentSession();
-//        CriteriaBuilder builder = s.getCriteriaBuilder();
-//        CriteriaQuery<CarCompany> query = builder.createQuery(CarCompany.class);
-//        Root root = query.from(CarCompany.class);
-//        query = query.select(root);
-//        query.where(builder.equal(root.get("id"),id));
-//        Query q = s.createQuery(query);
-//        return (CarCompany) q.getResultList().get(0);
-//    }
+    @Override
+    public boolean updateStatus(CarCompany carCompany) {
+        Session session = sessionFactory.getObject().getCurrentSession();
+        try{
+            session.merge(carCompany);
+            return true;
+        }catch(HibernateException ex){
+            System.err.println(ex.getMessage());
+        }
+        return false;
+    }
 
 }

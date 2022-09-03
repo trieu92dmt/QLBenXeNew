@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="container my-3">
@@ -109,6 +110,50 @@
                     </form>
                 </div>
             </div>
+            <div class="qlbx-div filter-rs mt-3 p-3">
+                <table style="font-size: 12px;" class="table">
+                    <thead>
+                        <tr>
+                            <th>Người gửi</th>
+                            <th>Người nhận</th>
+                            <th>Số điện thoại</th>
+                            <th>Email người nhận</th>
+                            <th>Thời điểm gửi</th>
+                            <th>Thời điểm nhận</th>
+                            <th>Phí vận chuyển</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${shipments}" var="s">
+                            <tr>
+                                <td>${s.sender}</td>
+                                <td>${s.receiver}</td>
+                                <td>${s.receiverPhone}</td>
+                                <td>${s.receiverEmail}</td>
+                                <td>${s.sendingTime}</td>
+                                <c:if test="${s.status == 0}">
+                                    <td>Chưa nhận hàng</td>
+                                </c:if>
+                                <c:if test="${s.status == 1}">
+                                    <td>${s.receivingTime}</td>
+                                </c:if>
+                                <td><fmt:formatNumber type="number" pattern="###,###" value="${s.cost}"/> VNĐ</td>
+                                <td class="d-flex">
+                                    <a href="<c:url value="/companyMn/send-email/${s.shipId}"/>">Gửi mail</a>
+                                    <c:if test="${s.status == 0}">
+                                        <div class="qlbx-btn">                                      
+                                            <button style="font-size: 12px;" id="shipment-filter" type="button" onclick="updateShipment(${s.shipId})">
+                                                Nhận hàng
+                                            </button>
+                                        </div>
+                                    </c:if>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="modal fade" id="addShipment">
             <div class="modal-dialog modal-lg">
@@ -151,7 +196,7 @@
                                     <label>Họ tên người nhận: </label>
                                     <div class="form-floating mb-3 mt-2">
                                         <form:input type="text" class="form-control" id="receiver" placeholder="Tên người nhận" path="receiver"/>
-                                        <label for="receiver    ">Tên người nhận</label>
+                                        <label for="receiver">Tên người nhận</label>
                                     </div>
                                 </div>
                                 <div class="form-group w-50 px-2">
@@ -166,20 +211,6 @@
                                     <div class="form-floating mb-3 mt-2">
                                         <form:input type="email" class="form-control" id="receiver-email" placeholder="Email người nhận" path="receiverEmail"/>
                                         <label for="receiver-email">Email người nhận</label>
-                                    </div>
-                                </div>
-                                <div class="form-group w-50 px-2">
-                                    <label>Thời điểm gửi: </label>
-                                    <div class="form-floating mb-3 mt-2">
-                                        <form:input type="datetime-local" class="form-control" id="sending-time" placeholder="Thời điểm gửi" path="sendingTime"/>
-                                        <label for="sending-time">Thời điểm gửi</label>
-                                    </div>
-                                </div>
-                                <div class="form-group w-50 px-2">
-                                    <label>Thời điểm nhận: </label>
-                                    <div class="form-floating mb-3 mt-2">
-                                        <form:input type="datetime-local" class="form-control" id="receiving-time" placeholder="Thời điểm nhận" path="receivingTime"/>
-                                        <label for="receiving-time">Thời điểm nhận</label>
                                     </div>
                                 </div>
                                 <div class="form-group w-50 px-2">

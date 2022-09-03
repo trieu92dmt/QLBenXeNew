@@ -176,3 +176,15 @@ $("#upload-img").on("change", function ()
         }
     }
 });
+
+
+function updateShipment(shipId){
+    fetch(`/QLBenXe/ship-api/update-ship-details/${shipId}`, {
+            method: 'post'
+        }).then(function (res) {
+            return res.json();
+        }).then(function (code) {
+            console.log(code);
+            location.reload();
+        })
+}

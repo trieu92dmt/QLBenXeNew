@@ -70,6 +70,8 @@ public class CarCompany implements Serializable {
     @Size(max = 45)
     @Column(name = "phone_number")
     private String phoneNumber;
+    @Column(name = "status")
+    private Integer status;
     @JoinColumn(name = "id", referencedColumnName = "user_id", insertable = false, updatable = true)
     @OneToOne(optional = false)
     private User user;
@@ -186,6 +188,20 @@ public class CarCompany implements Serializable {
 
     public void setRouteSet(Set<Route> routeSet) {
         this.routeSet = routeSet;
+    }
+
+    /**
+     * @return the status
+     */
+    public Integer getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
 

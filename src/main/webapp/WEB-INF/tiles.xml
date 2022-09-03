@@ -90,6 +90,10 @@
         <put-attribute name="title" value="Trang Chủ - Admin"/>
         <put-attribute name="content" value="/WEB-INF/jsp/admin/index.jsp"/>
     </definition>
+    <definition name="companyMn-ad" extends="baseAdminLayout">
+        <put-attribute name="title" value="QL Nhà Xe - Admin"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/companyMn.jsp"/>
+    </definition>
     <definition name="error" template="/WEB-INF/jsp/error.jsp">
     </definition>
 

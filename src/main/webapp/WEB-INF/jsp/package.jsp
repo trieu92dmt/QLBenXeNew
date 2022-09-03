@@ -17,11 +17,11 @@
     <ul class="d-flex justify-content-lg-between p-0">
         <c:forEach items="${packages}" var="p"> 
             <div class="card" style="width:400px">
-                <img class="card-img-top" src="<c:url value="/images/hutao5.jpg"/>" alt="Card image">
+                <img class="card-img-top" src="<c:url value="/images/package.jpg"/>" alt="Card image">
                 <div class="card-body">
                     <h4 class="card-title">${p.packageName}</h4>
                     <fmt:setLocale value = "vn_VN"/>
-                    <p class="card-text">Price: <fmt:formatNumber type="number" pattern="000,000" value="${p.price}"/> VNĐ</p>
+                    <p class="card-text">Giá: <fmt:formatNumber type="number" pattern="###,###" value="${p.price}"/> VNĐ</p>
                     <input type="button" class="btn-std-light btn-register-company" value="Đăng ký"/>
                     <input type="hidden" class="package-id" value="${p.id}"/>
                     <input type="hidden" class="package-name" value="${p.packageName}"/>
@@ -33,7 +33,7 @@
     </ul>
     <div class="company-register">
         <label class="register-form-title">Nhập Thông Tin Đăng Ký Nhà Xe</label>
-        <form:form class="row company-register-form" action="${carCompanyRegister}" method="post" modelAttribute="carCompanyRegister">
+        <form:form class="row company-register-form" action="${carCompanyRegister}" method="post" modelAttribute="carCompanyRegister" enctype="multipart/form-data">
             <div class="col-4 px-4">
                 <div class="company-info">
                     <label class="d-block text-center fw-bold fs-4 pb-3">Thông tin nhà xe</label>
@@ -86,6 +86,10 @@
                     <div class="form-floating mb-3 mt-2">
                         <form:input type="number" class="form-control" id="phoneNumber" placeholder="Số điện thoại" path="user.phoneNumber"/>
                         <label for="phoneNumber">Số điện thoại</label>
+                    </div>
+                    <div class="mb-3">
+                        <label for="avatar" class="form-label">Avatar </label>
+                        <form:input type="file" class="form-control" id="avatar" placeholder="Số điện thoại" path="user.file"/>
                     </div>
                 </div>
             </div>

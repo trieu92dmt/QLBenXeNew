@@ -15,4 +15,7 @@ import java.util.List;
 public interface ShipmentService {
     List<ShipmentDetails> getlistShipmentByTripId(int tripId);
     boolean addShipmentDetails(ShipmentDetails shipmentDetails);
+    boolean updateShipmentDetails(int shipId);
+    ShipmentDetails getShipmentById(int shipId);
+    
 }
