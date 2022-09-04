@@ -41,6 +41,23 @@ public class CarCompanyRepositoryImpl implements CarCompanyRepository{
         Query q = s.createQuery(query);
         return q.getResultList();
     }
+    
+    @Override
+    public List<CarCompany> getListCarCompanyByPage(int page) {
+        Session s = sessionFactory.getObject().getCurrentSession();
+        CriteriaBuilder builder = s.getCriteriaBuilder();
+        CriteriaQuery<CarCompany> query = builder.createQuery(CarCompany.class);
+        Root root = query.from(CarCompany.class);
+        query = query.select(root);
+        
+        Query q = s.createQuery(query);
+        int max = 6;
+        q.setMaxResults(max);
+        q.setFirstResult((page-1)*max);
+        
+        return q.getResultList();
+    }
+    
     @Override
     public CarCompany getCarCompanyById(int id){
         Session session = this.sessionFactory.getObject().getCurrentSession();
@@ -71,4 +88,11 @@ public class CarCompanyRepositoryImpl implements CarCompanyRepository{
         return false;
     }
 
+    @Override
+    public Long countListCarCompany() {
+        Session s = sessionFactory.getObject().getCurrentSession();
+        Query q = s.createQuery("Select Count(*) From CarCompany");
+        
+        return Long.parseLong(q.getSingleResult().toString());
+    }
 }

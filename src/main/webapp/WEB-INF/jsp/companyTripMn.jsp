@@ -144,19 +144,73 @@
                                                         <div class="downstairs-seats d-flex">
                                                             <div class="A d-flex flex-column">
                                                                 <c:forEach begin="1" end="5" var="i">
-                                                                    <input class="btn btn-primary btn-seat" type="button" onclick="addToCompanyCart(${trip.tripId},'A${i}D', ${trip.ticketPrice})" value="A${i}D"/>
+                                                                    <c:if test="${carts.size() > 0}">
+                                                                        <c:set value="0" var="check"/>
+                                                                        <c:forEach items="${carts}" var="c">
+                                                                            <c:set value="A${i}D" var="seatNumber"/>
+                                                                            <c:if test="${c.seatNumber == seatNumber && c.tripId == trip.tripId}">
+                                                                                <c:set value="1" var="check"/>
+                                                                                <input id="A${i}D-${trip.tripId}" class="btn btn-success m-1 btn-seat btn-seat-${trip.tripId}" type="button" onclick="addToCompanyCart(${trip.tripId}, 'A${i}D', ${trip.ticketPrice})" value="A${i}D"/>
+                                                                            </c:if>
+                                                                        </c:forEach>
+                                                                        <c:if test="${check == 0}">
+                                                                            <input id="A${i}D-${trip.tripId}" class="btn btn-primary m-1 btn-seat btn-seat-${trip.tripId}" type="button" onclick="addToCompanyCart(${trip.tripId}, 'A${i}D', ${trip.ticketPrice})" value="A${i}D"/>
+                                                                        </c:if>
+                                                                    </c:if>
+                                                                    <c:if test="${carts.size() == 0 || carts == null}">
+                                                                        <input id="A${i}D-${trip.tripId}" class="btn btn-primary m-1 btn-seat btn-seat-${trip.tripId}" type="button" onclick="addToCompanyCart(${trip.tripId}, 'A${i}D', ${trip.ticketPrice})" value="A${i}D"/>
+                                                                    </c:if>
                                                                 </c:forEach>
+                                                                <%--<c:forEach begin="1" end="5" var="i">--%>
+                                                                    <!--<input class="btn btn-primary btn-seat" type="button" onclick="addToCompanyCart(${trip.tripId}, 'A${i}D', ${trip.ticketPrice})" value="A${i}D"/>-->
+                                                                <%--</c:forEach>--%>
                                                             </div>
                                                             <div class="B d-flex flex-column">
                                                                 <input style="visibility: hidden;" class="btn btn-primary" type="button"/>
                                                                 <c:forEach begin="1" end="4" var="i">
-                                                                    <input class="btn btn-primary btn-seat" type="button" onclick="addToCompanyCart(${trip.tripId},'B${i}D', ${trip.ticketPrice})" value="B${i}D"/>
+                                                                    <c:if test="${carts.size() > 0}">
+                                                                        <c:set value="0" var="check"/>
+                                                                        <c:forEach items="${carts}" var="c">
+                                                                            <c:set value="B${i}D" var="seatNumber"/>
+                                                                            <c:if test="${c.seatNumber == seatNumber && c.tripId == trip.tripId}">
+                                                                                <c:set value="1" var="check"/>
+                                                                                <input id="B${i}D-${trip.tripId}" class="btn btn-success m-1 btn-seat btn-seat-${trip.tripId}" type="button" onclick="addToCompanyCart(${trip.tripId}, 'B${i}D', ${trip.ticketPrice})" value="B${i}D"/>
+                                                                            </c:if>
+                                                                        </c:forEach>
+                                                                        <c:if test="${check == 0}">
+                                                                            <input id="B${i}D-${trip.tripId}" class="btn btn-primary m-1 btn-seat btn-seat-${trip.tripId}" type="button" onclick="addToCompanyCart(${trip.tripId}, 'B${i}D', ${trip.ticketPrice})" value="B${i}D"/>
+                                                                        </c:if>
+                                                                    </c:if>
+                                                                    <c:if test="${carts.size() == 0 || carts == null}">
+                                                                        <input id="B${i}D-${trip.tripId}" class="btn btn-primary m-1 btn-seat btn-seat-${trip.tripId}" type="button" onclick="addToCompanyCart(${trip.tripId}, 'B${i}D', ${trip.ticketPrice})" value="B${i}D"/>
+                                                                    </c:if>
                                                                 </c:forEach>
+                                                                <%--<c:forEach begin="1" end="4" var="i">--%>
+                                                                    <!--<input class="btn btn-primary btn-seat" type="button" onclick="addToCompanyCart(${trip.tripId}, 'B${i}D', ${trip.ticketPrice})" value="B${i}D"/>-->
+                                                                <%--</c:forEach>--%>
                                                             </div>
                                                             <div class="C d-flex flex-column">
                                                                 <c:forEach begin="1" end="5" var="i">
-                                                                    <input class="btn btn-primary btn-seat" type="button" onclick="addToCompanyCart(${trip.tripId},'C${i}D', ${trip.ticketPrice})" value="C${i}D"/>
+                                                                    <c:if test="${carts.size() > 0}">
+                                                                        <c:set value="0" var="check"/>
+                                                                        <c:forEach items="${carts}" var="c">
+                                                                            <c:set value="C${i}D" var="seatNumber"/>
+                                                                            <c:if test="${c.seatNumber == seatNumber && c.tripId == trip.tripId}">
+                                                                                <c:set value="1" var="check"/>
+                                                                                <input id="C${i}D-${trip.tripId}" class="btn btn-success m-1 btn-seat btn-seat-${trip.tripId}" type="button" onclick="addToCompanyCart(${trip.tripId}, 'C${i}D', ${trip.ticketPrice})" value="C${i}D"/>
+                                                                            </c:if>
+                                                                        </c:forEach>
+                                                                        <c:if test="${check == 0}">
+                                                                            <input id="C${i}D-${trip.tripId}" class="btn btn-primary m-1 btn-seat btn-seat-${trip.tripId}" type="button" onclick="addToCompanyCart(${trip.tripId}, 'C${i}D', ${trip.ticketPrice})" value="C${i}D"/>
+                                                                        </c:if>
+                                                                    </c:if>
+                                                                    <c:if test="${carts.size() == 0 || carts == null}">
+                                                                        <input id="C${i}D-${trip.tripId}" class="btn btn-primary m-1 btn-seat btn-seat-${trip.tripId}" type="button" onclick="addToCompanyCart(${trip.tripId}, 'C${i}D', ${trip.ticketPrice})" value="C${i}D"/>
+                                                                    </c:if>
                                                                 </c:forEach>
+                                                                <%--<c:forEach begin="1" end="5" var="i">--%>
+                                                                    <!--<input class="btn btn-primary btn-seat" type="button" onclick="addToCompanyCart(${trip.tripId}, 'C${i}D', ${trip.ticketPrice})" value="C${i}D"/>-->
+                                                                <%--</c:forEach>--%>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -165,19 +219,74 @@
                                                         <div class="upstairs-seats d-flex">
                                                             <div class="A d-flex flex-column">
                                                                 <c:forEach begin="1" end="5" var="i">
-                                                                    <input class="btn btn-primary btn-seat" type="button" onclick="addToCompanyCart(${trip.tripId},'A${i}T', ${trip.ticketPrice})" value="A${i}T"/>
+                                                                    <c:if test="${carts.size() > 0}">
+                                                                        <c:set value="0" var="check"/>
+                                                                        <c:forEach items="${carts}" var="c">
+                                                                            <c:set value="A${i}T" var="seatNumber"/>
+                                                                            <c:if test="${c.seatNumber == seatNumber && c.tripId == trip.tripId}">
+                                                                                <c:set value="1" var="check"/>
+                                                                                <input id="A${i}T-${trip.tripId}" class="btn btn-success m-1 btn-seat btn-seat-${trip.tripId}" type="button" onclick="addToCompanyCart(${trip.tripId}, 'A${i}T', ${trip.ticketPrice})" value="A${i}T"/>
+                                                                            </c:if>
+                                                                        </c:forEach>
+                                                                        <c:if test="${check == 0}">
+                                                                            <input id="A${i}T-${trip.tripId}" class="btn btn-primary m-1 btn-seat btn-seat-${trip.tripId}" type="button" onclick="addToCompanyCart(${trip.tripId}, 'A${i}T', ${trip.ticketPrice})" value="A${i}T"/>
+                                                                        </c:if>
+                                                                    </c:if>
+                                                                    <c:if test="${carts.size() == 0 || carts == null}">
+                                                                        <input id="A${i}T-${trip.tripId}" class="btn btn-primary m-1 btn-seat btn-seat-${trip.tripId}" type="button" onclick="addToCompanyCart(${trip.tripId}, 'A${i}T', ${trip.ticketPrice})" value="A${i}T"/>
+                                                                    </c:if>
                                                                 </c:forEach>
+                                                                <%--<c:forEach begin="1" end="5" var="i">--%>
+                                                                    <!--<input class="btn btn-primary btn-seat" type="button" onclick="addToCompanyCart(${trip.tripId}, 'A${i}T', ${trip.ticketPrice})" value="A${i}T"/>-->
+                                                                <%--</c:forEach>--%>
                                                             </div>
                                                             <div class="B d-flex flex-column">
                                                                 <input style="visibility: hidden;" class="btn btn-primary" type="button"/>
                                                                 <c:forEach begin="1" end="4" var="i">
-                                                                    <input class="btn btn-primary btn-seat" type="button" onclick="addToCompanyCart(${trip.tripId},'B${i}T', ${trip.ticketPrice})" value="B${i}T"/>
+                                                                    <c:if test="${carts.size() > 0}">
+                                                                        <c:set value="0" var="check"/>
+                                                                        <c:forEach items="${carts}" var="c">
+                                                                            <c:set value="B${i}T" var="seatNumber"/>
+                                                                            <c:if test="${c.seatNumber == seatNumber && c.tripId == trip.tripId}">
+                                                                                <c:set value="1" var="check"/>
+                                                                                <input id="B${i}T-${trip.tripId}" class="btn btn-success m-1 btn-seat btn-seat-${trip.tripId}" type="button" onclick="addToCompanyCart(${trip.tripId}, 'B${i}T', ${trip.ticketPrice})" value="B${i}T"/>
+                                                                            </c:if>
+                                                                        </c:forEach>
+                                                                        <c:if test="${check == 0}">
+                                                                            <input id="B${i}T-${trip.tripId}" class="btn btn-primary m-1 btn-seat btn-seat-${trip.tripId}" type="button" onclick="addToCompanyCart(${trip.tripId}, 'B${i}T', ${trip.ticketPrice})" value="B${i}T"/>
+                                                                        </c:if>
+                                                                    </c:if>
+                                                                    <c:if test="${carts.size() == 0 || carts == null}">
+                                                                        <input id="B${i}T-${trip.tripId}" class="btn btn-primary m-1 btn-seat btn-seat-${trip.tripId}" type="button" onclick="addToCompanyCart(${trip.tripId}, 'B${i}T', ${trip.ticketPrice})" value="B${i}T"/>
+                                                                    </c:if>
                                                                 </c:forEach>
+                                                                <!--<input style="visibility: hidden;" class="btn btn-primary" type="button"/>-->
+                                                                <%--<c:forEach begin="1" end="4" var="i">--%>
+                                                                    <!--<input class="btn btn-primary btn-seat" type="button" onclick="addToCompanyCart(${trip.tripId}, 'B${i}T', ${trip.ticketPrice})" value="B${i}T"/>-->
+                                                                <%--</c:forEach>--%>
                                                             </div>
                                                             <div class="C d-flex flex-column">
                                                                 <c:forEach begin="1" end="5" var="i">
-                                                                    <input class="btn btn-primary btn-seat" type="button" onclick="addToCompanyCart(${trip.tripId},'C${i}T', ${trip.ticketPrice})" value="C${i}T"/>
+                                                                    <c:if test="${carts.size() > 0}">
+                                                                        <c:set value="0" var="check"/>
+                                                                        <c:forEach items="${carts}" var="c">
+                                                                            <c:set value="C${i}T" var="seatNumber"/>
+                                                                            <c:if test="${c.seatNumber == seatNumber && c.tripId == trip.tripId}">
+                                                                                <c:set value="1" var="check"/>
+                                                                                <input id="C${i}T-${trip.tripId}" class="btn btn-success m-1 btn-seat btn-seat-${trip.tripId}" type="button" onclick="addToCompanyCart(${trip.tripId}, 'C${i}T', ${trip.ticketPrice})" value="C${i}T"/>
+                                                                            </c:if>
+                                                                        </c:forEach>
+                                                                        <c:if test="${check == 0}">
+                                                                            <input id="C${i}T-${trip.tripId}" class="btn btn-primary m-1 btn-seat btn-seat-${trip.tripId}" type="button" onclick="addToCompanyCart(${trip.tripId}, 'C${i}T', ${trip.ticketPrice})" value="C${i}T"/>
+                                                                        </c:if>
+                                                                    </c:if>
+                                                                    <c:if test="${carts.size() == 0 || carts == null}">
+                                                                        <input id="C${i}T-${trip.tripId}" class="btn btn-primary m-1 btn-seat btn-seat-${trip.tripId}" type="button" onclick="addToCompanyCart(${trip.tripId}, 'C${i}T', ${trip.ticketPrice})" value="C${i}T"/>
+                                                                    </c:if>
                                                                 </c:forEach>
+                                                                <%--<c:forEach begin="1" end="5" var="i">--%>
+                                                                    <!--<input class="btn btn-primary btn-seat" type="button" onclick="addToCompanyCart(${trip.tripId}, 'C${i}T', ${trip.ticketPrice})" value="C${i}T"/>-->
+                                                                <%--</c:forEach>--%>
                                                             </div>
                                                         </div>
                                                     </div>

@@ -46,10 +46,6 @@ public class HomeController {
             if (now.compareTo(date) > 0)
                 throw new Exception();
             model.addAttribute("trips", this.tripService.getListTripsByDestinationAndDate(destination, date));
-            Map<String, CompanyCart> carts = (Map<String, CompanyCart>) session.getAttribute("company-cart");
-            if (carts != null) {
-                model.addAttribute("carts", carts.values());
-            }
         }catch(Exception ex){
             return "redirect:/";
         }

@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="container mt-3">
     <div class="row">
@@ -13,7 +14,7 @@
                 <div class="dropdown-select">
                     <div class="d-flex align-items-center">
                         <i class="fa-solid fa-caravan me-3"></i>
-                        <a class="select" href="<c:url value="/list-company"/>">Danh sách nhà xe</a>
+                        <a class="select" href="<c:url value="/list-company"/>"><spring:message code="listCompany"/></a>
                     </div>
                     <i class="fa-solid fa-angle-right"></i>
                 </div>
@@ -62,4 +63,3 @@
         </form>-->
     </div>
 </div>
-

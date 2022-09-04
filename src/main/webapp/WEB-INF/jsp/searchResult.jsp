@@ -100,11 +100,8 @@
                                         <span>Giờ xuất phát: ${t[2]}</span>
                                     </div>
                                 </div>
-                                <div class="bot-content d-flex justify-content-lg-between p-1">
-                                    <div class="empty-seat">
-                                        <span>28 chỗ còn trống</span>
-                                    </div>
-                                    <div class="qlbx-btn">
+                                <div class="bot-content d-flex justify-content-end p-1">
+                                    <div class="qlbx-btn ms-auto">
                                         <button type="button" class="ticket-book-btn" onclick="getTicketBooked(${t[0]})">
                                             <input class="trip-id" type="hidden" value="#ticket-list-${t[0]}"/>
                                             Đặt vé
@@ -132,15 +129,15 @@
                                                                     <c:set value="A${i}D" var="seatNumber"/>
                                                                     <c:if test="${c.seatNumber == seatNumber && c.tripId == t[0]}">
                                                                         <c:set value="1" var="check"/>
-                                                                        <input id="C${i}T-${t[0]}" class="btn btn-success m-1 btn-seat btn-seat-${t[0]}" type="button" onclick="addToCompanyCart(${t[0]}, 'A${i}D', ${t[4]}, `${t[6].companyName}`, `${t[5].provinceName}`, `${t[1]}`, `${t[2]}`)" value="A${i}D"/>
+                                                                        <input id="A${i}T-${t[0]}" class="btn btn-success m-1 btn-seat btn-seat-${t[0]}" type="button" onclick="addToCompanyCart(${t[0]}, 'A${i}D', ${t[4]}, `${t[6].companyName}`, `${t[5].provinceName}`, `${t[1]}`, `${t[2]}`)" value="A${i}D"/>
                                                                     </c:if>
                                                                 </c:forEach>
                                                                 <c:if test="${check == 0}">
-                                                                    <input id="C${i}T-${t[0]}" class="btn btn-primary m-1 btn-seat btn-seat-${t[0]}" type="button" onclick="addToCompanyCart(${t[0]}, 'A${i}D', ${t[4]}, `${t[6].companyName}`, `${t[5].provinceName}`, `${t[1]}`, `${t[2]}`)" value="A${i}D"/>
+                                                                    <input id="A${i}T-${t[0]}" class="btn btn-primary m-1 btn-seat btn-seat-${t[0]}" type="button" onclick="addToCompanyCart(${t[0]}, 'A${i}D', ${t[4]}, `${t[6].companyName}`, `${t[5].provinceName}`, `${t[1]}`, `${t[2]}`)" value="A${i}D"/>
                                                                 </c:if>
                                                             </c:if>
                                                             <c:if test="${carts.size() == 0 || carts == null}">
-                                                                <input id="C${i}T-${t[0]}" class="btn btn-primary m-1 btn-seat btn-seat-${t[0]}" type="button" onclick="addToCompanyCart(${t[0]}, 'A${i}D', ${t[4]}, `${t[6].companyName}`, `${t[5].provinceName}`, `${t[1]}`, `${t[2]}`)" value="A${i}D"/>
+                                                                <input id="A${i}T-${t[0]}" class="btn btn-primary m-1 btn-seat btn-seat-${t[0]}" type="button" onclick="addToCompanyCart(${t[0]}, 'A${i}D', ${t[4]}, `${t[6].companyName}`, `${t[5].provinceName}`, `${t[1]}`, `${t[2]}`)" value="A${i}D"/>
                                                             </c:if>
                                                         </c:forEach>
                                                     </div>
@@ -153,15 +150,15 @@
                                                                     <c:set value="B${i}D" var="seatNumber"/>
                                                                     <c:if test="${c.seatNumber == seatNumber && c.tripId == t[0]}">
                                                                         <c:set value="1" var="check"/>
-                                                                        <input id="C${i}T-${t[0]}" class="btn btn-success m-1 btn-seat btn-seat-${t[0]}" type="button" onclick="addToCompanyCart(${t[0]}, 'B${i}D', ${t[4]}, `${t[6].companyName}`, `${t[5].provinceName}`, `${t[1]}`, `${t[2]}`)" value="B${i}D"/>
+                                                                        <input id="B${i}T-${t[0]}" class="btn btn-success m-1 btn-seat btn-seat-${t[0]}" type="button" onclick="addToCompanyCart(${t[0]}, 'B${i}D', ${t[4]}, `${t[6].companyName}`, `${t[5].provinceName}`, `${t[1]}`, `${t[2]}`)" value="B${i}D"/>
                                                                     </c:if>
                                                                 </c:forEach>
                                                                 <c:if test="${check == 0}">
-                                                                    <input id="C${i}T-${t[0]}" class="btn btn-primary m-1 btn-seat btn-seat-${t[0]}" type="button" onclick="addToCompanyCart(${t[0]}, 'B${i}D', ${t[4]}, `${t[6].companyName}`, `${t[5].provinceName}`, `${t[1]}`, `${t[2]}`)" value="B${i}D"/>
+                                                                    <input id="B${i}T-${t[0]}" class="btn btn-primary m-1 btn-seat btn-seat-${t[0]}" type="button" onclick="addToCompanyCart(${t[0]}, 'B${i}D', ${t[4]}, `${t[6].companyName}`, `${t[5].provinceName}`, `${t[1]}`, `${t[2]}`)" value="B${i}D"/>
                                                                 </c:if>
                                                             </c:if>
                                                             <c:if test="${carts.size() == 0 || carts == null}">
-                                                                <input id="C${i}T-${t[0]}" class="btn btn-primary m-1 btn-seat btn-seat-${t[0]}" type="button" onclick="addToCompanyCart(${t[0]}, 'B${i}D', ${t[4]}, `${t[6].companyName}`, `${t[5].provinceName}`, `${t[1]}`, `${t[2]}`)" value="B${i}D"/>
+                                                                <input id="B${i}T-${t[0]}" class="btn btn-primary m-1 btn-seat btn-seat-${t[0]}" type="button" onclick="addToCompanyCart(${t[0]}, 'B${i}D', ${t[4]}, `${t[6].companyName}`, `${t[5].provinceName}`, `${t[1]}`, `${t[2]}`)" value="B${i}D"/>
                                                             </c:if>
                                                         </c:forEach>
                                                     </div>
@@ -198,15 +195,15 @@
                                                                     <c:set value="A${i}T" var="seatNumber"/>
                                                                     <c:if test="${c.seatNumber == seatNumber && c.tripId == t[0]}">
                                                                         <c:set value="1" var="check"/>
-                                                                        <input id="C${i}T-${t[0]}" class="btn btn-success m-1 btn-seat btn-seat-${t[0]}" type="button" onclick="addToCompanyCart(${t[0]}, 'A${i}T', ${t[4]}, `${t[6].companyName}`, `${t[5].provinceName}`, `${t[1]}`, `${t[2]}`)" value="A${i}T"/>
+                                                                        <input id="A${i}T-${t[0]}" class="btn btn-success m-1 btn-seat btn-seat-${t[0]}" type="button" onclick="addToCompanyCart(${t[0]}, 'A${i}T', ${t[4]}, `${t[6].companyName}`, `${t[5].provinceName}`, `${t[1]}`, `${t[2]}`)" value="A${i}T"/>
                                                                     </c:if>
                                                                 </c:forEach>
                                                                 <c:if test="${check == 0}">
-                                                                    <input id="C${i}T-${t[0]}" class="btn btn-primary m-1 btn-seat btn-seat-${t[0]}" type="button" onclick="addToCompanyCart(${t[0]}, 'A${i}T', ${t[4]}, `${t[6].companyName}`, `${t[5].provinceName}`, `${t[1]}`, `${t[2]}`)" value="A${i}T"/>
+                                                                    <input id="A${i}T-${t[0]}" class="btn btn-primary m-1 btn-seat btn-seat-${t[0]}" type="button" onclick="addToCompanyCart(${t[0]}, 'A${i}T', ${t[4]}, `${t[6].companyName}`, `${t[5].provinceName}`, `${t[1]}`, `${t[2]}`)" value="A${i}T"/>
                                                                 </c:if>
                                                             </c:if>
                                                             <c:if test="${carts.size() == 0 || carts == null}">
-                                                                <input id="C${i}T-${t[0]}" class="btn btn-primary m-1 btn-seat btn-seat-${t[0]}" type="button" onclick="addToCompanyCart(${t[0]}, 'A${i}T', ${t[4]}, `${t[6].companyName}`, `${t[5].provinceName}`, `${t[1]}`, `${t[2]}`)" value="A${i}T"/>
+                                                                <input id="A${i}T-${t[0]}" class="btn btn-primary m-1 btn-seat btn-seat-${t[0]}" type="button" onclick="addToCompanyCart(${t[0]}, 'A${i}T', ${t[4]}, `${t[6].companyName}`, `${t[5].provinceName}`, `${t[1]}`, `${t[2]}`)" value="A${i}T"/>
                                                             </c:if>
                                                         </c:forEach>
                                                     </div>
@@ -219,15 +216,15 @@
                                                                     <c:set value="B${i}T" var="seatNumber"/>
                                                                     <c:if test="${c.seatNumber == seatNumber && c.tripId == t[0]}">
                                                                         <c:set value="1" var="check"/>
-                                                                        <input id="C${i}T-${t[0]}" class="btn btn-success m-1 btn-seat btn-seat-${t[0]}" type="button" onclick="addToCompanyCart(${t[0]}, 'B${i}T', ${t[4]}, `${t[6].companyName}`, `${t[5].provinceName}`, `${t[1]}`, `${t[2]}`)" value="B${i}T"/>
+                                                                        <input id="B${i}T-${t[0]}" class="btn btn-success m-1 btn-seat btn-seat-${t[0]}" type="button" onclick="addToCompanyCart(${t[0]}, 'B${i}T', ${t[4]}, `${t[6].companyName}`, `${t[5].provinceName}`, `${t[1]}`, `${t[2]}`)" value="B${i}T"/>
                                                                     </c:if>
                                                                 </c:forEach>
                                                                 <c:if test="${check == 0}">
-                                                                    <input id="C${i}T-${t[0]}" class="btn btn-primary m-1 btn-seat btn-seat-${t[0]}-${t[0]}" type="button" onclick="addToCompanyCart(${t[0]}, 'B${i}T', ${t[4]}, `${t[6].companyName}`, `${t[5].provinceName}`, `${t[1]}`, `${t[2]}`)" value="B${i}T"/>
+                                                                    <input id="B${i}T-${t[0]}" class="btn btn-primary m-1 btn-seat btn-seat-${t[0]}-${t[0]}" type="button" onclick="addToCompanyCart(${t[0]}, 'B${i}T', ${t[4]}, `${t[6].companyName}`, `${t[5].provinceName}`, `${t[1]}`, `${t[2]}`)" value="B${i}T"/>
                                                                 </c:if>
                                                             </c:if>
                                                             <c:if test="${carts.size() == 0 || carts == null}">
-                                                                <input id="C${i}T-${t[0]}" class="btn btn-primary m-1 btn-seat btn-seat-${t[0]}" type="button" onclick="addToCompanyCart(${t[0]}, 'B${i}T', ${t[4]}, `${t[6].companyName}`, `${t[5].provinceName}`, `${t[1]}`, `${t[2]}`)" value="B${i}T"/>
+                                                                <input id="B${i}T-${t[0]}" class="btn btn-primary m-1 btn-seat btn-seat-${t[0]}" type="button" onclick="addToCompanyCart(${t[0]}, 'B${i}T', ${t[4]}, `${t[6].companyName}`, `${t[5].provinceName}`, `${t[1]}`, `${t[2]}`)" value="B${i}T"/>
                                                             </c:if> 
                                                         </c:forEach>
                                                     </div>

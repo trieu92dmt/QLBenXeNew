@@ -50,6 +50,19 @@ function addToCompanyCart(tripId, seatNumber, price, companyName, destination, d
     })
 }
 
+function deleteCartItem(seatNumber) {
+    if (confirm("Xóa vé ?") == true) {
+        fetch(`/QLBenXe/cart-api/delete-ticket/${seatNumber}`, {
+            method: 'delete'
+        }).then(function (res) {
+            return res.json()
+        }).then(function (data) {
+            console.log(data)
+            location.reload();
+        })
+    }
+}
+
 $(".ticket-book-btn").click(function () {
     $($(this).children(".trip-id").val()).fadeToggle('fast');
 })
@@ -78,7 +91,7 @@ function getTicketBooked(tripId) {
         return res.json();
     }).then(function (data) {
         console.log(data);
-        var selector = ".btn-seat-"+ tripId;
+        var selector = ".btn-seat-" + tripId;
         var btnSeat = document.querySelectorAll(selector);
         for (var i = 0; i < btnSeat.length; i++) {
             for (var j = 0; j < data.length; j++) {
@@ -121,7 +134,7 @@ function addComment(companyId) {
         return res.json();
     }).then(function (data) {
         console.log(data);
-
+        document.getElementById("cmt").value = "";
         let area = document.getElementById("list-comment");
         area.innerHTML = `<div class="comment d-flex my-3">
                     <div class="avatar-cmt">
@@ -140,7 +153,7 @@ function addComment(companyId) {
     })
 }
 
-function getListTripByRoute(){
+function getListTripByRoute() {
     var url = new URL('http://localhost:8080/QLBenXe/api/trips');
     var params = {
         routeId: document.getElementById("route-data").value,
@@ -153,7 +166,7 @@ function getListTripByRoute(){
         console.log(data);
         let area = document.getElementById("trip-data");
         let html = "";
-        for (var i = 0; i < data.length; i++){
+        for (var i = 0; i < data.length; i++) {
             html = `<option value="${data[i].tripId}">${data[i].departureTime}</option>` + html;
         }
         console.log(html);
@@ -178,13 +191,13 @@ $("#upload-img").on("change", function ()
 });
 
 
-function updateShipment(shipId){
+function updateShipment(shipId) {
     fetch(`/QLBenXe/ship-api/update-ship-details/${shipId}`, {
-            method: 'post'
-        }).then(function (res) {
-            return res.json();
-        }).then(function (code) {
-            console.log(code);
-            location.reload();
-        })
+        method: 'post'
+    }).then(function (res) {
+        return res.json();
+    }).then(function (code) {
+        console.log(code);
+        location.reload();
+    })
 }

@@ -47,4 +47,19 @@ public class CarCompanyServiceImpl implements CarCompanyService{
         c.setStatus(status);
         return this.carCompanyRepository.updateStatus(c);
     }
+
+    @Override
+    public List<CarCompany> getListCarCompanyByPage(int page) {
+        return this.carCompanyRepository.getListCarCompanyByPage(page);
+    }
+
+    @Override
+    public Long countListCarCompany() {
+        return this.carCompanyRepository.countListCarCompany();
+    }
+
+    @Override
+    public boolean updateCarCompany(CarCompany carCompany) {
+        return this.carCompanyRepository.updateStatus(carCompany);
+    }
 }

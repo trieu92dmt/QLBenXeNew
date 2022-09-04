@@ -16,5 +16,7 @@ public interface CarCompanyRepository {
     boolean addCarCompany(CarCompany carCompany);
     boolean updateStatus(CarCompany carCompany);
     List<CarCompany> getListCarCompany();
+    List<CarCompany> getListCarCompanyByPage(int page);
+    Long countListCarCompany();
     CarCompany getCarCompanyById(int id);
 }

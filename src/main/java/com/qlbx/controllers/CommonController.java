@@ -35,10 +35,14 @@ public class CommonController {
         model.addAttribute("currentUser", session.getAttribute("currentUser"));
         model.addAttribute("provinces", this.provinceService.getListProvince());
         Map<String, CompanyCart> cart = (Map<String, CompanyCart>) session.getAttribute("company-cart");
-        if (cart == null)
+        if (cart == null){
             model.addAttribute("countCart", 0);
+        }
         else 
+        {
             model.addAttribute("countCart", cart.size());
+            model.addAttribute("carts", cart.values());
+        }
         
     }
     

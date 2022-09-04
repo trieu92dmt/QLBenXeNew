@@ -12,39 +12,48 @@
         Giỏ Hàng
     </div>
     <div class="qlbx-div content mt-3 py-2 px-4">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Ghế ngồi</th>
-                    <th>Nhà xe</th>
-                    <th>Điểm đi</th>
-                    <th>Ngày đi</th>
-                    <th>Giờ xuất phát</th>
-                    <th>Giá vé</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <c:forEach items="${carts}" var="c">
+        <c:if test="${countCart == 0}">
+            <div class="no-rs text-center">
+                <img class="w-25 p-3" src="<c:url value="/images/box.png"/>" alt="alt"/>
+                <h2 class="text-center p-3">Giỏ hàng trống!!</h2>
+            </div>
+        </c:if>
+        <c:if test="${countCart > 0}">
+            <table class="table">
+                <thead>
                     <tr>
-                        <td>${c.seatNumber}</td>
-                        <td>${c.companyName}</td>
-                        <td>${c.destination}</td>
-                        <td>${c.departureDate}</td>
-                        <td>${c.departureTime}</td>
-                        <td>${c.price} vnd</td>
-                        <td>
-                            <button type="button" class="btn btn-danger">Xóa</button>
-                        </td>
+                        <th>Ghế ngồi</th>
+                        <th>Nhà xe</th>
+                        <th>Điểm đi</th>
+                        <th>Ngày đi</th>
+                        <th>Giờ xuất phát</th>
+                        <th>Giá vé</th>
+                        <th></th>
                     </tr>
-                </c:forEach>
-            </tbody>
-        </table>
-        <span>Tổng số vé: ${carts.size()}</span>
-        <span>Thành tiền: ${totalPrice} vnđ</span>
-        <div>
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#pay">Thanh Toán</button>
-        </div>
+                </thead>
+                <tbody>
+                    <c:forEach items="${carts}" var="c">
+                        <tr>
+                            <td>${c.seatNumber}</td>
+                            <td>${c.companyName}</td>
+                            <td>${c.destination}</td>
+                            <td>${c.departureDate}</td>
+                            <td>${c.departureTime}</td>
+                            <td>${c.price} vnd</td>
+                            <td>
+                                <button type="button" class="btn btn-danger" onclick="deleteCartItem(`${c.seatNumber}`)">Xóa</button>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+            <span>Tổng số vé: ${carts.size()}</span>
+            <br>
+            <span>Thành tiền: ${totalPrice} vnđ</span>
+            <div>
+                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#pay">Thanh Toán</button>
+            </div>  
+        </c:if>
         <div class="modal fade" id="pay">
             <div class="modal-dialog">
                 <div class="modal-content">

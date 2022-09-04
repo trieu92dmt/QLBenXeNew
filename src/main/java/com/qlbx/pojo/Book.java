@@ -47,11 +47,11 @@ public class Book implements Serializable {
     @Id
     @Basic(optional = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @NotNull
+//    @NotNull
     @Column(name = "book_id")
     private Integer bookId;
     @Basic(optional = false)
-    @NotNull
+//    @NotNull
     @Column(name = "ticket_quantity")
     private int ticketQuantity;
     @Column(name = "total")

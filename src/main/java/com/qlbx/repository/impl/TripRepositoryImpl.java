@@ -68,6 +68,7 @@ public class TripRepositoryImpl implements TripRepository{
         Predicate p2 = builder.equal(root.get("date"), date);
         
         query.where(builder.and(p1, p2));
+        query.orderBy(builder.asc(root.get("ticketPrice")));
         Query q = session.createQuery(query);
         return q.getResultList();
     }

@@ -70,8 +70,10 @@ public class CarCompanyController {
     }
     
     @GetMapping("/list-company")
-    public String listCarCompany(Model model){
-        model.addAttribute("carcompany", this.carCompanyService.getListCarCompany());
+    public String listCarCompany(Model model, @RequestParam(required = false) Map<String, String> params){
+        int page = Integer.parseInt(params.getOrDefault("page", "1"));
+        model.addAttribute("carcompany", this.carCompanyService.getListCarCompanyByPage(page));
+        model.addAttribute("listCompanySize", this.carCompanyService.countListCarCompany());
         
     return "listCarCompany";
     }

@@ -97,7 +97,7 @@ public class CarCompanyMnController {
             carCompany.setAddress(avatarCarCompany.getAddress());
             carCompany.setEmail(avatarCarCompany.getEmail());
             carCompany.setPhoneNumber(avatarCarCompany.getPhoneNumber());
-            this.carCompanyService.addCarCompany(carCompany);
+            this.carCompanyService.updateCarCompany(carCompany);
         } catch (IOException ex) {
             System.err.print(ex.getMessage());
         }

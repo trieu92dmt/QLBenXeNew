@@ -271,7 +271,7 @@
                             <div class="main-cmt w-100 ps-3">
                                 <div class="cmt-info d-flex align-items-center justify-content-lg-between">
                                     <label class="username fw-bold fs-5 d-block">${cmt.userId.username}</label>
-                                    <span class="cmt-time d-block">7 giờ trước</span>
+                                    <span class="cmt-time d-block">${cmt.createdDate}</span>
                                 </div>
                                 <div class="cmt-content">
                                     <span>${cmt.content}</span>
@@ -288,4 +288,11 @@
     $('html, body').animate({
         scrollTop: $("#search-result").offset().top
     });
+</script>
+<script>
+    window.onload = function(){
+        let dates = document.getElementsByClassName("cmt-time")
+        for (let i=0; i< dates.length; i++)
+            dates[i].innerText = moment(dates[i].innerText).fromNow();
+    }
 </script>

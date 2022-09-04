@@ -14,8 +14,11 @@ import java.util.List;
  */
 public interface CarCompanyService {
     boolean addCarCompany(CarCompany carCompany);
+    boolean updateCarCompany(CarCompany carCompany);
     boolean updateStatus(int companyId, int status);
+    Long countListCarCompany();
     List<CarCompany> getListCarCompany();
+    List<CarCompany> getListCarCompanyByPage(int page);
     CarCompany getCarCompanyById(int id);
 }
 

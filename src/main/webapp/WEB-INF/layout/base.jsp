@@ -33,4 +33,12 @@
         $("#departure-date").attr("min", mome.format("YYYY-MM-DD").toString());
         $("#departure-date").val(mome.format("YYYY-MM-DD").toString());
     </script>
+    <script>
+//        window.onload = function(){
+            langs = document.getElementsByClassName("lang-change")
+            for (let i=0; i<langs.length; i++){
+                langs[i].href = window.location.href.split('?')[0] + "?lang=" + langs[i].dataset.lang;
+            }
+//        }
+    </script>
 </html>

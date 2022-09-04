@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="container my-3">
     <div class="row">
@@ -121,7 +122,7 @@
                                     <tr>
                                         <td>${s[0]}</td>
                                         <td>${s[1].provinceName}</td>
-                                        <td>${s[2]}</td>
+                                        <td><fmt:formatNumber type="number" pattern="###,###" value="${s[2]}"/></td>
                                     </tr>
                                 </c:forEach>
                             </tbody>

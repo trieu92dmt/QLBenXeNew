@@ -86,7 +86,7 @@ CREATE TABLE `book` (
   `customer_name` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone_number` varchar(45) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`book_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,7 +95,7 @@ CREATE TABLE `book` (
 
 LOCK TABLES `book` WRITE;
 /*!40000 ALTER TABLE `book` DISABLE KEYS */;
-INSERT INTO `book` VALUES (1,2,320000,NULL,'Äáº·ng Minh Triá»u','0948513923'),(3,2,320000,NULL,'Dang Minh Trieu','0948513923'),(4,2,320000,NULL,'Dang Minh Trieu','0948513923'),(5,2,320000,NULL,'Dang Minh Trieu','0948513923');
+INSERT INTO `book` VALUES (1,2,320000,NULL,'Äáº·ng Minh Triá»u','0948513923'),(3,2,320000,NULL,'Dang Minh Trieu','0948513923'),(4,2,320000,NULL,'Dang Minh Trieu','0948513923'),(5,2,320000,NULL,'Dang Minh Trieu','0948513923'),(6,2,290000,NULL,'Äáº·ng Minh Triá»u','0948513923'),(7,2,320000,NULL,'Dang Minh Trieu','0948513923');
 /*!40000 ALTER TABLE `book` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,7 +126,7 @@ CREATE TABLE `car_company` (
 
 LOCK TABLES `car_company` WRITE;
 /*!40000 ALTER TABLE `car_company` DISABLE KEYS */;
-INSERT INTO `car_company` VALUES (4,'Trung Nga','Hồ Chí Minh',NULL,'phuongtrang@gmail.com','0948513923',1),(6,'Minh Triều','Hồ Chí Minh',NULL,'nhaxe03@gmail.com','0948513923',1),(20,'Cúc Tùng','Hồ Chí Minh',NULL,'cuctung@gmail.com','0948513923',1),(29,'Thai Thanh','Ho Chi Minh',NULL,'thaithanh@gmail.com','0948513923',-1),(34,'Tam Hanh','Ho Chi Minh',NULL,'tamhanh@gmail.com','0948513923',-1);
+INSERT INTO `car_company` VALUES (4,'Trung Nga','Hồ Chí Minh',NULL,'phuongtrang@gmail.com','0948513923',1),(6,'Minh Triều','Hồ Chí Minh',NULL,'nhaxe03@gmail.com','0948513923',1),(20,'Cúc Tùng','Hồ Chí Minh',NULL,'cuctung@gmail.com','0948513923',1),(29,'Thai Thanh','Ho Chi Minh',NULL,'thaithanh@gmail.com','0948513923',-1),(34,'Tam Hanh','Ho Chi Minh',NULL,'tamhanh@gmail.com','0948513923',-1),(35,'Mai Linh','Ho Chi Minh',NULL,'mailinh@gmail.com','0948513923',0),(36,'Bích Hạnh','Ho Chi Minh',NULL,'tamhanh@gmail.com','0948513923',0),(37,'Minh Thống','Ho Chi Minh',NULL,'minhthong@gmail.com','0948513923',0);
 /*!40000 ALTER TABLE `car_company` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -148,7 +148,7 @@ CREATE TABLE `comment` (
   KEY `fk_comment_com_idx` (`company_id`),
   CONSTRAINT `fk_comment_com` FOREIGN KEY (`company_id`) REFERENCES `car_company` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_comment_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -157,7 +157,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
-INSERT INTO `comment` VALUES (5,1,4,'Hello mấy cưng','2022-08-26 17:33:19'),(6,1,4,'Kỳ v ta','2022-08-26 17:59:02'),(7,2,4,'Hello mấy cưng','2022-08-26 18:08:46'),(8,2,4,'Nhà xe như bùi','2022-08-26 18:14:30'),(9,2,4,'Bài viết như lồn','2022-08-26 18:15:41'),(10,2,4,'Bài viết như bùi','2022-08-26 19:43:01'),(11,2,4,'Bài viết như bùi','2022-08-26 19:44:57'),(12,4,4,'Hello mấy cưng','2022-08-27 15:10:43'),(13,1,4,'CMT','2022-09-01 22:43:14'),(14,4,4,'CMT TEST','2022-09-01 23:29:06'),(15,4,4,'CMT TEST','2022-09-01 23:30:35'),(16,4,4,'CMT TEST','2022-09-01 23:31:06'),(17,4,4,'CMT TEST','2022-09-01 23:45:26'),(18,4,4,'FINAL LOAD TEST','2022-09-01 23:46:02');
+INSERT INTO `comment` VALUES (5,1,4,'Hello mấy cưng','2022-08-26 17:33:19'),(6,1,4,'Kỳ v ta','2022-08-26 17:59:02'),(7,2,4,'Hello mấy cưng','2022-08-26 18:08:46'),(8,2,4,'Nhà xe như bùi','2022-08-26 18:14:30'),(9,2,4,'Bài viết như lồn','2022-08-26 18:15:41'),(10,2,4,'Bài viết như bùi','2022-08-26 19:43:01'),(11,2,4,'Bài viết như bùi','2022-08-26 19:44:57'),(12,4,4,'Hello mấy cưng','2022-08-27 15:10:43'),(13,1,4,'CMT','2022-09-01 22:43:14'),(14,4,4,'CMT TEST','2022-09-01 23:29:06'),(15,4,4,'CMT TEST','2022-09-01 23:30:35'),(16,4,4,'CMT TEST','2022-09-01 23:31:06'),(17,4,4,'CMT TEST','2022-09-01 23:45:26'),(18,4,4,'FINAL LOAD TEST','2022-09-01 23:46:02'),(19,2,4,'TEST','2022-09-04 14:25:40'),(20,2,4,'Hello boy','2022-09-04 14:31:17');
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -223,7 +223,7 @@ CREATE TABLE `province` (
   `id` int NOT NULL AUTO_INCREMENT,
   `province_name` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -232,7 +232,7 @@ CREATE TABLE `province` (
 
 LOCK TABLES `province` WRITE;
 /*!40000 ALTER TABLE `province` DISABLE KEYS */;
-INSERT INTO `province` VALUES (1,'TP.Hồ Chí Minh'),(2,'Bình Thuận'),(3,'Đà Nẵng'),(4,'Ninh Thuận'),(5,'Bến Tre');
+INSERT INTO `province` VALUES (1,'TP.Hồ Chí Minh'),(2,'Bình Thuận'),(3,'Đà Nẵng'),(4,'Ninh Thuận'),(5,'Bến Tre'),(6,'Khánh Hòa'),(7,'Đồng Tháp');
 /*!40000 ALTER TABLE `province` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -282,7 +282,7 @@ CREATE TABLE `route` (
   KEY `fk_route_province_idx` (`destination`),
   CONSTRAINT `fk_route_com` FOREIGN KEY (`company_id`) REFERENCES `car_company` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `fk_route_province` FOREIGN KEY (`destination`) REFERENCES `province` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -291,7 +291,7 @@ CREATE TABLE `route` (
 
 LOCK TABLES `route` WRITE;
 /*!40000 ALTER TABLE `route` DISABLE KEYS */;
-INSERT INTO `route` VALUES (12,'TP. Hồ Chí Minh',2,4),(14,'TP.Ho Chi Minh',3,4),(15,'TP.Ho Chi Minh',5,4),(16,'TP.Ho Chi Minh',2,6),(17,'TP.Ho Chi Minh',3,6);
+INSERT INTO `route` VALUES (12,'TP. Hồ Chí Minh',2,4),(14,'TP.Ho Chi Minh',3,4),(15,'TP.Ho Chi Minh',5,4),(16,'TP.Ho Chi Minh',2,6),(17,'TP.Ho Chi Minh',3,6),(19,'TP.Ho Chi Minh',4,4),(20,'TP.Ho Chi Minh',6,4);
 /*!40000 ALTER TABLE `route` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -347,7 +347,7 @@ CREATE TABLE `ticket` (
   KEY `fk_ticket_book_idx` (`book_id`),
   CONSTRAINT `fk_ticket_book` FOREIGN KEY (`book_id`) REFERENCES `book` (`book_id`),
   CONSTRAINT `fk_ticket_trip` FOREIGN KEY (`trip_id`) REFERENCES `trip` (`trip_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -356,7 +356,7 @@ CREATE TABLE `ticket` (
 
 LOCK TABLES `ticket` WRITE;
 /*!40000 ALTER TABLE `ticket` DISABLE KEYS */;
-INSERT INTO `ticket` VALUES (19,'A2D',145000,33,NULL),(20,'A1D',145000,33,NULL),(21,'A2D',160000,35,NULL),(22,'A1D',160000,35,NULL),(23,'A2D',160000,36,3),(24,'A1D',160000,36,3),(25,'C2D',160000,35,4),(26,'C1D',160000,35,4),(27,'A2T',160000,35,5),(28,'B1T',160000,35,5),(29,'A2D',145000,38,NULL),(30,'A1D',145000,38,NULL);
+INSERT INTO `ticket` VALUES (19,'A2D',145000,33,NULL),(20,'A1D',145000,33,NULL),(21,'A2D',160000,35,NULL),(22,'A1D',160000,35,NULL),(23,'A2D',160000,36,3),(24,'A1D',160000,36,3),(25,'C2D',160000,35,4),(26,'C1D',160000,35,4),(27,'A2T',160000,35,5),(28,'B1T',160000,35,5),(29,'A2D',145000,38,NULL),(30,'A1D',145000,38,NULL),(31,'A2D',145000,48,6),(32,'A1D',145000,48,6),(33,'A2D',160000,49,NULL),(34,'A1D',160000,49,NULL),(35,'C2D',160000,49,7),(36,'B1D',160000,49,7),(37,'A2T',160000,49,NULL),(38,'B1T',160000,49,NULL);
 /*!40000 ALTER TABLE `ticket` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -377,7 +377,7 @@ CREATE TABLE `trip` (
   PRIMARY KEY (`trip_id`),
   KEY `fk_trip_route_idx` (`route_id`),
   CONSTRAINT `fk_trip_route` FOREIGN KEY (`route_id`) REFERENCES `route` (`route_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=53 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -386,7 +386,7 @@ CREATE TABLE `trip` (
 
 LOCK TABLES `trip` WRITE;
 /*!40000 ALTER TABLE `trip` DISABLE KEYS */;
-INSERT INTO `trip` VALUES (30,'2022-08-29','07:00','2 tieng',145000,12),(31,'2022-08-29','08:00','2 tieng',145000,12),(32,'2022-08-29','09:00','2 tieng',145000,12),(33,'2022-08-30','07:00','2 tiáº¿ng',145000,12),(34,'2022-08-30','09:00','2 tiáº¿ng',145000,12),(35,'2022-09-01','07:00','2 tieng',160000,15),(36,'2022-09-01','09:00','2 tieng',160000,15),(38,'2022-09-02','09:00','2 tieng',145000,12),(40,'2022-09-03','07:00','2 tieng',145000,12),(41,'2022-09-03','09:00','2 tieng',145000,12),(42,'2022-09-03','10:00','2 tieng',145000,12),(43,'2022-09-03','13:00','2 tieng',145000,12),(44,'2022-09-03','15:00','2 tieng',145000,12),(45,'2022-09-03','07:00','2 tieng',145000,16),(46,'2022-09-03','09:00','2 tieng',145000,16),(47,'2022-09-03','07:00','2 tieng',145000,14);
+INSERT INTO `trip` VALUES (30,'2022-08-29','07:00','2 tieng',145000,12),(31,'2022-08-29','08:00','2 tieng',145000,12),(32,'2022-08-29','09:00','2 tieng',145000,12),(33,'2022-08-30','07:00','2 tiáº¿ng',145000,12),(34,'2022-08-30','09:00','2 tiáº¿ng',145000,12),(35,'2022-09-01','07:00','2 tieng',160000,15),(36,'2022-09-01','09:00','2 tieng',160000,15),(38,'2022-09-02','09:00','2 tieng',145000,12),(40,'2022-09-03','07:00','2 tieng',145000,12),(41,'2022-09-03','09:00','2 tieng',145000,12),(42,'2022-09-03','10:00','2 tieng',145000,12),(43,'2022-09-03','13:00','2 tieng',145000,12),(44,'2022-09-03','15:00','2 tieng',145000,12),(45,'2022-09-03','07:00','2 tieng',145000,16),(46,'2022-09-03','09:00','2 tieng',145000,16),(47,'2022-09-03','07:00','2 tieng',145000,14),(48,'2022-09-04','07:00','2 tiáº¿ng',145000,12),(49,'2022-09-05','08:00','2 tieng',160000,12),(50,'2022-09-05','11:00','2 tieng',160000,12),(51,'2022-09-05','14:00','2 tieng',160000,12),(52,'2022-09-05','16:00','2 tieng',160000,12);
 /*!40000 ALTER TABLE `trip` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -409,7 +409,7 @@ CREATE TABLE `user` (
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username_UNIQUE` (`username`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -418,7 +418,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'trieu92dmt','$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO','trieu251101@gmail.com','0948513923',NULL,'ROLE_USER',NULL),(2,'trieu12ik24','$2a$10$hG6ne4YMCWU/0tYr.HhgCeC.TW2kuWVyy1rioh4mSJtdSjDtCFAKu','trieu@gmail.com','0948513923',NULL,'ROLE_USER',NULL),(3,'admin01','$2a$10$qv8SsUwRnp/YhPWTPqdgp.MXJ01hcW4ji6wKvP6.qkWWx1ZxhqxyG','trieu92dmt@gmail.com','0948513923',NULL,'ROLE_ADMIN',NULL),(4,'nhaxe01','$2a$10$baCNXtHzm0.nRDwgaXPe4eZeOQILg2WBfRVM.tOGj5tyX8m17wlt6','nhaxe01@gmail.com','0948513923','https://res.cloudinary.com/minhtrieu-cloudinary/image/upload/v1662113780/yzogiinqdenja4dvqchi.jpg','ROLE_COMPANY',NULL),(5,'nhaxetest','$2a$10$gcIiUScPISAVtY83xjT5j.RCBZXnTKbqMqhWgiLZa8UWPf8TJ4FQK','test@gmail.com','0948513923',NULL,'ROLE_COMPANY',NULL),(6,'nhaxe02','$2a$10$o1Ok8lrAosCyCBAAra00X.46Vq.msQE6Luw8GNkoQzxo.mjj1VOJO','nhaxe02@gmail.com','0948513923','https://res.cloudinary.com/minhtrieu-cloudinary/image/upload/v1662220643/m05aitghb4bshxie9uqt.png','ROLE_COMPANY',NULL),(8,'usertest','$2a$10$d9HRJAoQ.nQp/iHt5dUNcOl15ehDuFYj4/HxeIzdVo.VL0A0ImCUa','usertest@gmail.com','0948513923',NULL,'ROLE_USER',NULL),(20,'cuctung','$2a$10$on5Pk747RD5VfsZnfnaya.C6ngWuKJZODGy7kH64A6e4ZhqBWO5hK','cuctung@gmail.com','0948513923',NULL,'ROLE_COMPANY',NULL),(29,'thaithanh','$2a$10$8/1zeDTralkwpBZZoRwN1.rSDO3bMh1VrENM2zYD41S5wmt/uIpTK','thaithanh@gmail.com','0948513923',NULL,'ROLE_COMPANY',NULL),(30,'user001','$2a$10$LAp/H3p.h/4nRAtM5EgVA.PDdSG6ry1GHhia.kodoE3LQmu9/Li1C','user001@gmail.com','0948513923','https://res.cloudinary.com/minhtrieu-cloudinary/image/upload/v1661619527/rkren0obyueqlndsnuon.png','ROLE_USER',NULL),(31,'user002','$2a$10$0E./zqLjLz8xFYMRRSDCNeeQinHQF6GxKvY0mYFRUzwhDoJmwe.fe','user002@gmail.com','0948513923','https://res.cloudinary.com/minhtrieu-cloudinary/image/upload/v1661619527/rkren0obyueqlndsnuon.png','ROLE_USER',NULL),(32,'user003','$2a$10$y4fKAvN/hhvcyn8ZFNFqXOV/E9XTPdtLRQnBGjL94GRxNJTbM/Juy','user003@gmail.com','0948513923','https://res.cloudinary.com/minhtrieu-cloudinary/image/upload/v1661619527/rkren0obyueqlndsnuon.png','ROLE_USER',NULL),(33,'user004','$2a$10$ITb2dvT8VaSeWqnK16HvKunCx2UmOzvKnmmOH5sh940LR93xFlkMe','user004@gmail.com','0948513923','https://res.cloudinary.com/minhtrieu-cloudinary/image/upload/v1661619527/rkren0obyueqlndsnuon.png','ROLE_USER',NULL),(34,'nhaxe05','$2a$10$ngrE4cbTb8VO43awaoNLvubAWgtkTnAX7tZ70gE6TeIbjvndtd2FO','tamhanh@gmail.com','0948513923','https://res.cloudinary.com/minhtrieu-cloudinary/image/upload/v1661619527/rkren0obyueqlndsnuon.png','ROLE_COMPANY',NULL);
+INSERT INTO `user` VALUES (1,'trieu92dmt','$2a$10$5X9k5N1sTc1/CjVH5XJoje3QMYijH3ETpgkox00R0MdPaJPPrf7wO','trieu251101@gmail.com','0948513923','https://res.cloudinary.com/minhtrieu-cloudinary/image/upload/v1661619527/rkren0obyueqlndsnuon.png','ROLE_USER',NULL),(2,'trieu12ik24','$2a$10$hG6ne4YMCWU/0tYr.HhgCeC.TW2kuWVyy1rioh4mSJtdSjDtCFAKu','trieu@gmail.com','0948513923','https://res.cloudinary.com/minhtrieu-cloudinary/image/upload/v1661619527/rkren0obyueqlndsnuon.png','ROLE_USER',NULL),(3,'admin01','$2a$10$qv8SsUwRnp/YhPWTPqdgp.MXJ01hcW4ji6wKvP6.qkWWx1ZxhqxyG','trieu92dmt@gmail.com','0948513923','https://res.cloudinary.com/minhtrieu-cloudinary/image/upload/v1661619527/rkren0obyueqlndsnuon.png','ROLE_ADMIN',NULL),(4,'nhaxe01','$2a$10$baCNXtHzm0.nRDwgaXPe4eZeOQILg2WBfRVM.tOGj5tyX8m17wlt6','nhaxe01@gmail.com','0948513923','https://res.cloudinary.com/minhtrieu-cloudinary/image/upload/v1662291021/qtmgi8kngdwmaoaxi3rr.jpg','ROLE_COMPANY',NULL),(5,'nhaxetest','$2a$10$gcIiUScPISAVtY83xjT5j.RCBZXnTKbqMqhWgiLZa8UWPf8TJ4FQK','test@gmail.com','0948513923','https://res.cloudinary.com/minhtrieu-cloudinary/image/upload/v1661619527/rkren0obyueqlndsnuon.png','ROLE_COMPANY',NULL),(6,'nhaxe02','$2a$10$o1Ok8lrAosCyCBAAra00X.46Vq.msQE6Luw8GNkoQzxo.mjj1VOJO','nhaxe02@gmail.com','0948513923','https://res.cloudinary.com/minhtrieu-cloudinary/image/upload/v1662220643/m05aitghb4bshxie9uqt.png','ROLE_COMPANY',NULL),(8,'usertest','$2a$10$d9HRJAoQ.nQp/iHt5dUNcOl15ehDuFYj4/HxeIzdVo.VL0A0ImCUa','usertest@gmail.com','0948513923','https://res.cloudinary.com/minhtrieu-cloudinary/image/upload/v1661619527/rkren0obyueqlndsnuon.png','ROLE_USER',NULL),(20,'cuctung','$2a$10$on5Pk747RD5VfsZnfnaya.C6ngWuKJZODGy7kH64A6e4ZhqBWO5hK','cuctung@gmail.com','0948513923','https://res.cloudinary.com/minhtrieu-cloudinary/image/upload/v1661619527/rkren0obyueqlndsnuon.png','ROLE_COMPANY',NULL),(29,'thaithanh','$2a$10$8/1zeDTralkwpBZZoRwN1.rSDO3bMh1VrENM2zYD41S5wmt/uIpTK','thaithanh@gmail.com','0948513923','https://res.cloudinary.com/minhtrieu-cloudinary/image/upload/v1661619527/rkren0obyueqlndsnuon.png','ROLE_COMPANY',NULL),(30,'user001','$2a$10$LAp/H3p.h/4nRAtM5EgVA.PDdSG6ry1GHhia.kodoE3LQmu9/Li1C','user001@gmail.com','0948513923','https://res.cloudinary.com/minhtrieu-cloudinary/image/upload/v1661619527/rkren0obyueqlndsnuon.png','ROLE_USER',NULL),(31,'user002','$2a$10$0E./zqLjLz8xFYMRRSDCNeeQinHQF6GxKvY0mYFRUzwhDoJmwe.fe','user002@gmail.com','0948513923','https://res.cloudinary.com/minhtrieu-cloudinary/image/upload/v1661619527/rkren0obyueqlndsnuon.png','ROLE_USER',NULL),(32,'user003','$2a$10$y4fKAvN/hhvcyn8ZFNFqXOV/E9XTPdtLRQnBGjL94GRxNJTbM/Juy','user003@gmail.com','0948513923','https://res.cloudinary.com/minhtrieu-cloudinary/image/upload/v1661619527/rkren0obyueqlndsnuon.png','ROLE_USER',NULL),(33,'user004','$2a$10$ITb2dvT8VaSeWqnK16HvKunCx2UmOzvKnmmOH5sh940LR93xFlkMe','user004@gmail.com','0948513923','https://res.cloudinary.com/minhtrieu-cloudinary/image/upload/v1661619527/rkren0obyueqlndsnuon.png','ROLE_USER',NULL),(34,'nhaxe05','$2a$10$ngrE4cbTb8VO43awaoNLvubAWgtkTnAX7tZ70gE6TeIbjvndtd2FO','tamhanh@gmail.com','0948513923','https://res.cloudinary.com/minhtrieu-cloudinary/image/upload/v1661619527/rkren0obyueqlndsnuon.png','ROLE_COMPANY',NULL),(35,'nhaxe06','$2a$10$1Iu4TRevVgI2BJKfonR9l.90IArv2sUbw.RlJNvcbvnqcAI5NMI7C','mailinh@gmail.com','0948513923','https://res.cloudinary.com/minhtrieu-cloudinary/image/upload/v1661619527/rkren0obyueqlndsnuon.png','ROLE_COMPANY',NULL),(36,'bichhanh','$2a$10$UhXBjvbc.t2uecRoG9ij5epAyFpod.W7uun.rEFlxtCpvn7pljk8O','bichhanh@gmail.com','0948513923','https://res.cloudinary.com/minhtrieu-cloudinary/image/upload/v1662290069/khrboww9jgliedjoqwx1.jpg','ROLE_COMPANY',NULL),(37,'minhthong','$2a$10$oLFsI.aeZEgD.4STfh5ll.2gkiSkOkVtx5bC1DPR.MF1jsCNKt7V6','minhthong@gmail.com','0948513923','https://res.cloudinary.com/minhtrieu-cloudinary/image/upload/v1662290151/uubez5h2h0cmxgzbpkax.jpg','ROLE_COMPANY',NULL);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -431,4 +431,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-09-04  5:22:56
+-- Dump completed on 2022-09-04 19:12:40

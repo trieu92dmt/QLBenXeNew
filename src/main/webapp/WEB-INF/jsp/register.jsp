@@ -11,7 +11,7 @@
 <div class="container-fluid p-0">
     <div class="row">
         <div class="col-6 p-0">
-            <img class="w-100" src="<c:url value="/images/rem2.png"/>" alt=""/>
+            <img class="w-100" src="<c:url value="/images/xekhach5.jpg"/>" alt=""/>
         </div>
         <div class="col-6 p-0 d-flex">
             <div class="login-form w-50 m-auto">
